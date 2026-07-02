@@ -1,868 +1,847 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio showcasing projects, certificates, conferences, and papers">
-  <title>Jubayer Ahmed Sajid </title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Ensure smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-    /* Fixed navbar styling */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-    /* Mobile menu hidden by default */
-    #mobile-menu {
-      display: none;
-    }
-    /* Custom hover effect for project cards */
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-    }
-    /* Social icons styling */
-    .social-icon {
-      transition: transform 0.3s ease;
-    }
-    .social-icon:hover {
-      transform: scale(1.1);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jubayer Ahmed Sajid — Aerospace Engineer · Impact Dynamics & FEA</title>
+<meta name="description" content="Portfolio of Jubayer Ahmed Sajid: aerospace engineering researcher specializing in impact dynamics, composite structures, FEA/CFD simulation and ML-driven engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070B12;
+  --bg2:#0B1220;
+  --panel:#0D1524;
+  --line:rgba(148,180,220,.13);
+  --line2:rgba(148,180,220,.22);
+  --text:#DCE6F2;
+  --muted:#8296AE;
+  --dim:#5A6B82;
+  --c-blue:#1E4FD8;
+  --c-cyan:#0FB4E8;
+  --c-green:#2BD97E;
+  --c-yellow:#F5D90A;
+  --c-red:#FF5B3A;
+  --jet:linear-gradient(90deg,#10309F,#0FB4E8,#2BD97E,#F5D90A,#FF5B3A);
+  --font-d:'Chakra Petch',sans-serif;
+  --font-b:'IBM Plex Sans',sans-serif;
+  --font-m:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.65;overflow-x:hidden}
+::selection{background:var(--c-cyan);color:#04121C}
+a{color:var(--c-cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--c-cyan);outline-offset:3px}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(7,11,18,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-logo{font-family:var(--font-m);font-size:13px;letter-spacing:.14em;color:var(--text)}
+.nav-logo b{color:var(--c-cyan)}
+.nav-links{display:flex;gap:26px;flex-wrap:wrap}
+.nav-links a{font-family:var(--font-m);font-size:11.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.nav-links a:hover{color:var(--c-cyan);text-decoration:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden}
+#sim{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-fade{position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
+.hud{position:absolute;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;color:var(--muted);pointer-events:none;text-transform:uppercase}
+.hud-tl{top:76px;left:28px}
+.hud-tr{top:76px;right:28px;text-align:right}
+.hud-tr .live{color:var(--c-green)}
+.hud small{color:var(--dim)}
+.hud-corner{position:absolute;width:22px;height:22px;border:1px solid var(--line2);pointer-events:none}
+.hc1{top:66px;left:16px;border-right:none;border-bottom:none}
+.hc2{top:66px;right:16px;border-left:none;border-bottom:none}
+.hc3{bottom:16px;left:16px;border-right:none;border-top:none}
+.hc4{bottom:16px;right:16px;border-left:none;border-top:none}
+.hero-copy{position:absolute;left:0;right:0;bottom:110px;padding:0 28px;max-width:1200px;margin:0 auto;pointer-events:none}
+.hero-copy .eyebrow{pointer-events:auto}
+h1{font-family:var(--font-d);font-weight:700;font-size:clamp(38px,6.2vw,86px);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase}
+h1 .thin{display:block;font-weight:500;color:var(--muted);font-size:.42em;letter-spacing:.22em;margin-bottom:14px}
+h1 .grad{background:var(--jet);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{margin-top:18px;max-width:640px;color:var(--muted);font-size:15.5px}
+.hero-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
+.btn{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--line2);color:var(--text);background:rgba(13,21,36,.6);transition:border-color .2s,background .2s}
+.btn:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-decoration:none}
+.btn-solid{background:var(--c-cyan);color:#04121C;border-color:var(--c-cyan);font-weight:500}
+.btn-solid:hover{background:#3FC8F0;color:#04121C}
+/* deformation legend */
+.legend{position:absolute;left:28px;bottom:26px;font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.08em}
+.legend-bar{width:220px;height:8px;background:var(--jet);border:1px solid rgba(255,255,255,.15);margin:6px 0 4px}
+.legend-row{display:flex;justify-content:space-between;width:220px;color:var(--dim)}
+.hud-time{position:absolute;right:28px;bottom:26px;font-family:var(--font-m);font-size:11px;color:var(--muted);text-align:right;letter-spacing:.08em}
+.hud-time b{color:var(--c-yellow);font-weight:500}
+
+/* ---------- SHARED SECTION SHELL ---------- */
+section{max-width:1200px;margin:0 auto;padding:110px 28px 30px}
+.eyebrow{font-family:var(--font-m);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-cyan);display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;max-width:120px;height:1px;background:var(--line2)}
+h2{font-family:var(--font-d);font-weight:600;font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;letter-spacing:.01em;margin:14px 0 8px}
+.section-note{color:var(--muted);max-width:680px;font-size:15px;margin-bottom:44px}
+.jetline{height:3px;background:var(--jet);opacity:.85;max-width:96px;margin:22px 0 0;border-radius:2px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
+.about-grid p{color:var(--muted);margin-bottom:16px;font-size:15.5px}
+.about-grid p b{color:var(--text);font-weight:600}
+.spec-card{border:1px solid var(--line);background:var(--panel);padding:26px}
+.spec-card h3{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.spec{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.spec:last-child{border-bottom:none}
+.spec .k{font-family:var(--font-m);font-size:11.5px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.spec .v{color:var(--text);text-align:right}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:64px}
+.stat{background:var(--bg2);padding:26px 22px}
+.stat .n{font-family:var(--font-d);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--text)}
+.stat .n span{color:var(--c-cyan)}
+.stat .l{font-family:var(--font-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+
+/* ---------- RESEARCH ---------- */
+.pub{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
+.pub:first-of-type{border-top:1px solid var(--line)}
+.pub .status{font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:1px solid;display:inline-block;white-space:nowrap}
+.st-pub{color:var(--c-green);border-color:rgba(43,217,126,.4)}
+.st-acc{color:var(--c-yellow);border-color:rgba(245,217,10,.4)}
+.st-rev{color:var(--c-cyan);border-color:rgba(15,180,232,.4)}
+.st-sub{color:var(--muted);border-color:var(--line2)}
+.pub h3{font-family:var(--font-b);font-weight:600;font-size:16.5px;line-height:1.45;margin-bottom:6px}
+.pub .venue{font-family:var(--font-m);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.pub .doi{font-family:var(--font-m);font-size:11.5px;letter-spacing:.08em;white-space:nowrap;align-self:center}
+.conf-list{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.conf{background:var(--bg2);padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.conf .tag{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+.conf p{font-size:14px;font-weight:500;line-height:1.5;flex:1}
+.conf a{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- PROJECTS ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj{border:1px solid var(--line);background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.proj:hover{border-color:var(--c-cyan);transform:translateY(-4px)}
+.proj .thumb{aspect-ratio:16/10;overflow:hidden;background:#050810;border-bottom:1px solid var(--line)}
+.proj .thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05);transition:transform .5s ease}
+.proj:hover .thumb img{transform:scale(1.05)}
+.proj .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.proj .tag{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;color:var(--c-cyan);text-transform:uppercase}
+.proj h3{font-size:15.5px;font-weight:600;line-height:1.45;flex:1}
+.proj a.view{font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.proj a.view:hover{color:var(--c-cyan);text-decoration:none}
+.more-sims{margin-top:56px;border:1px solid var(--line)}
+.more-sims summary{cursor:pointer;list-style:none;padding:20px 24px;font-family:var(--font-m);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);display:flex;justify-content:space-between;align-items:center;background:var(--panel)}
+.more-sims summary::-webkit-details-marker{display:none}
+.more-sims summary span.hint{color:var(--dim);font-size:10.5px}
+.more-sims[open] summary{border-bottom:1px solid var(--line)}
+.sim-list{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.sim-list a{display:flex;gap:14px;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13.5px;transition:color .2s,background .2s}
+.sim-list a:nth-child(odd){border-right:1px solid var(--line)}
+.sim-list a:hover{color:var(--text);background:rgba(15,180,232,.05);text-decoration:none}
+.sim-list a .idx{font-family:var(--font-m);font-size:10.5px;color:var(--dim);min-width:26px}
+
+/* ---------- EXPERIENCE ---------- */
+.tl{border-left:1px solid var(--line2);margin-left:8px;padding-left:36px;display:flex;flex-direction:column;gap:40px;position:relative}
+.tl-item{position:relative}
+.tl-item::before{content:"";position:absolute;left:-41px;top:7px;width:9px;height:9px;background:var(--bg);border:2px solid var(--c-cyan);transform:rotate(45deg)}
+.tl-item .when{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--c-yellow);text-transform:uppercase}
+.tl-item h3{font-family:var(--font-d);font-size:18px;font-weight:600;margin:6px 0 2px}
+.tl-item .org{font-size:13.5px;color:var(--muted);font-family:var(--font-m)}
+.tl-item p{color:var(--muted);font-size:14.5px;margin-top:10px;max-width:720px}
+.tl-item .result{display:inline-block;margin-top:10px;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-green);border:1px solid rgba(43,217,126,.35);padding:5px 10px}
+
+/* ---------- SKILLS / CERTS ---------- */
+.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.sk{border:1px solid var(--line);background:var(--panel);padding:26px}
+.sk h3{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-cyan);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--font-m);font-size:11.5px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line2);padding:6px 12px;transition:color .2s,border-color .2s}
+.chip:hover{color:var(--text);border-color:var(--c-cyan)}
+.cert-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.cert-row:last-child{border:none}
+.cert-row .c{color:var(--text)}
+.cert-row .y{font-family:var(--font-m);color:var(--dim);font-size:11.5px;white-space:nowrap}
+
+/* ---------- REFERENCES / CONTACT ---------- */
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ref{border:1px solid var(--line);background:var(--panel);padding:24px}
+.ref h3{font-family:var(--font-d);font-size:16px;font-weight:600}
+.ref .role{color:var(--muted);font-size:13px;margin:6px 0 12px;line-height:1.5}
+.ref a{font-family:var(--font-m);font-size:11.5px;word-break:break-all}
+.contact{border:1px solid var(--line);background:var(--panel);padding:56px 40px;text-align:center;margin-top:10px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--jet)}
+.contact h2{margin-top:0}
+.contact p{color:var(--muted);max-width:560px;margin:0 auto 30px}
+.contact .row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+footer{max-width:1200px;margin:80px auto 0;padding:26px 28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .about-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr 1fr}
+  .conf-list{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .pub{grid-template-columns:1fr;gap:10px}
+  .pub .doi{align-self:start}
+  .ref-grid{grid-template-columns:1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .sim-list{grid-template-columns:1fr}
+  .sim-list a:nth-child(odd){border-right:none}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .proj-grid{grid-template-columns:1fr}
+  .hud-tr{display:none}
+  section{padding:80px 20px 20px}
+  .hero-copy{padding:0 20px;bottom:96px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .proj,.proj .thumb img{transition:none}
+}
+
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--jet);z-index:60;transition:width .08s linear}
+
+/* ---------- publication ticker ---------- */
+.pub-ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:36px 0 46px;padding:13px 0;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:inline-block;font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);animation:tick 46s linear infinite;will-change:transform}
+.ticker-track span{margin:0 22px}
+.ticker-track .dot{color:var(--c-cyan);margin:0 4px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- journal publication cards ---------- */
+.jpub{display:grid;grid-template-columns:92px 1fr auto;gap:30px;align-items:center;padding:30px 30px 30px 26px;border:1px solid var(--line);background:var(--panel);margin-bottom:14px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,background .3s}
+.jpub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--jet);opacity:0;transition:opacity .3s}
+.jpub:hover{border-color:var(--line2);background:#0F1828;transform:translateX(6px)}
+.jpub:hover::before{opacity:1}
+.jnum{font-family:var(--font-d);font-weight:700;font-size:28px;color:var(--dim);letter-spacing:.02em;transition:color .3s}
+.jpub:hover .jnum{color:var(--c-cyan)}
+.jmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.jvenue{font-family:var(--font-m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fa-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-yellow);font-style:normal}
+.jpub h3{font-family:var(--font-d);font-weight:600;font-size:18.5px;line-height:1.45;margin-bottom:10px}
+.jauth{font-family:var(--font-m);font-size:12.5px;color:var(--dim);letter-spacing:.03em}
+.jauth mark,.cauth mark{background:transparent;color:var(--c-cyan);font-weight:600}
+.jdoi{font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:11px 18px;border:1px solid var(--line2);color:var(--text);white-space:nowrap;transition:border-color .2s,background .2s}
+a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-decoration:none}
+.jdoi-dim{color:var(--dim);border-style:dashed}
+.cauth{font-family:var(--font-m);font-size:11.5px;color:var(--dim);letter-spacing:.03em;line-height:1.6}
+@media(max-width:960px){
+  .jpub{grid-template-columns:1fr;gap:14px;align-items:start}
+  .jnum{font-size:20px}
+  .jdoi{justify-self:start}
+}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  .jpub,#progress{transition:none}
+}
+
+@media(max-width:768px){
+  nav{backdrop-filter:none;background:rgba(7,11,18,.94)}
+}
+</style>
 </head>
-<body class="bg-gray-100 font-sans">
-  <!-- Fixed Navigation Bar -->
-  <nav class="navbar bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <span class="text-xl font-bold text-gray-800">Jubayer Ahmed Sajid </span>
-        </div>
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-4">
-          <a href="#about" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
-          <a href="#projects" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-          <a href="#certificates" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Certificates</a>
-          <a href="#conferences" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Research</a>
-          <a href="#gallery" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Work Journey</a>
-          <a href="#reference" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">References</a>
-          <a href="#connect" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Connect</a>
-        </div>
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-white shadow-md">
-      <a href="#about" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">About</a>
-      <a href="#projects" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Projects</a>
-      <a href="#certificates" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Certificates</a>
-      <a href="#conferences" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Research</a>
-      <a href="#gallery" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Work Journeys</a>
-      <a href="#reference" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">References</a>
-      <a href="#connect" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Connect</a>
-    </div>
-  </nav>
+<body>
+<div id="progress" aria-hidden="true"></div>
 
-  <!-- Hero Section -->   <!--pt-20 pb-12 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center-->
-  <section class="pt-20 pb-12 bg-gray-800 text-white text-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome</h1>
-      <p class="text-lg md:text-xl mb-6">Aerospace Engineering Student specializing in Impact Dynamics, Composites and Lattices | ANSYS Simulation | Published Researcher | CSWP Certified | ML Enthusiast</p>
-      <a href="#projects" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100">View My Work</a>
-    </div>
-  </section>
+<nav>
+  <div class="nav-logo"><b>JAS</b> // IMPACT · STRUCTURES · SIMULATION</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Simulations</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-<section id="about" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
-    <div class="flex flex-col md:flex-row items-center gap-8">
-      <img src="pic.jpeg" alt="Jubayer Ahmed Sajid" class="w-80 h-auto rounded-lg shadow-md">
-      <div class="text-gray-600 text-lg text-justify leading-relaxed">
-        <p>
-          <strong class="text-gray-900">Jubayer Ahmed Sajid</strong> is a senior Aerospace Engineering student at Aviation and Aerospace University, Bangladesh, specializing in CAD, 
-          additive manufacturing, and ANSYS-based advanced simulations. A National CAD Competition Champion, he has contributed to major international 
-          aerospace competitions, including AIAA Design/Build/Fly and the VFS Design Competition. His research focuses on composites, structural optimization, 
-          bird strike analysis, and advanced simulation methods combined with Machine Learning. He has published in MDPI Designs, has five conference papers 
-          accepted at IOCAE 2026, and has also submitted journal papers on structural FEA and machine learning-based bird strike analysis. 
-          Guided by <b>Dr. Saiaf Bin Rayhan</b> and <b>Dr. Ivan Grgic</b>, he is building a strong profile as an emerging aerospace researcher and engineer.
-        </p>
+<header class="hero">
+  <canvas id="sim" aria-label="Live 3D simulation of a soft-body impact on a stiffened panel"></canvas>
+  <div class="hud-corner hc1"></div><div class="hud-corner hc2"></div>
+  <div class="hud-corner hc3"></div><div class="hud-corner hc4"></div>
+  <div class="hud hud-tl">Viewport 01 — Soft body impact / composite stiffened panel<br><small>Mesh: shell · SPH projectile · loop enabled</small></div>
+  <div class="hud hud-tr"><span class="live">● Solver: Explicit Dynamics</span><br><small>Model: thesis demonstrator</small></div>
+  <div class="hero-copy">
+    <h1>
+      <span class="thin">Jubayer Ahmed Sajid — Aerospace Engineering</span>
+      I break things<br><span class="grad">in simulation</span>
+    </h1>
+    <p class="hero-sub">Impact dynamics, composite structures and FEA/CFD — with machine-learning surrogates to predict what the solver takes hours to compute. Published researcher, national CAD champion, prospective PhD applicant.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#research">View research</a>
+      <a class="btn" href="#projects">32+ simulations</a>
+    </div>
+  </div>
+  <div class="legend">TOTAL DEFORMATION [MM]
+    <div class="legend-bar"></div>
+    <div class="legend-row"><span>0.00</span><span>0.55</span><span>1.10</span><span>1.65</span><span>2.20</span></div>
+  </div>
+  <div class="hud-time">t = <b id="simTime">0.0000</b> s<br><span id="simState">PROJECTILE IN FLIGHT</span></div>
+  <div class="hero-fade"></div>
+</header>
+
+<main>
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="rv">
+    <div class="eyebrow">01 / Profile</div>
+    <h2>Engineer of the moment things fail</h2>
+    <div class="jetline"></div>
+  </div>
+  <div class="about-grid" style="margin-top:44px">
+    <div class="rv">
+      <p><b>Jubayer Ahmed Sajid</b> is a senior Aerospace Engineering student at Aviation and Aerospace University, Bangladesh (AAUB), specializing in <b>impact dynamics, composite and lattice structures, and ANSYS-based advanced simulation</b>. His work lives in the microseconds where a bird meets a fan blade, a soft body meets a stiffened panel, or a projectile meets Kevlar — and in the models that predict what happens next.</p>
+      <p>His undergraduate thesis develops <b>machine-learning-based prediction of soft-body impacts on composite stiffened panels</b>, pairing explicit dynamics with data-driven surrogates so that hours of solver time collapse into seconds of inference. He has published in MDPI <i>Designs</i> and <i>Modelling</i>, with further journal work accepted and under review at Technical Gazette and Wiley journals.</p>
+      <p>Beyond research, he has competed at the front of international design competitions — AIAA Design/Build/Fly and two Vertical Flight Society design competitions — and led the winning team at a national CAD championship. He is guided by <b>Dr. Saiaf Bin Rayhan</b> and <b>Dr. Ivan Grgić</b>, and is currently preparing PhD applications in computational mechanics and aerospace structures.</p>
+    </div>
+    <div class="spec-card rv">
+      <h3>// System specification</h3>
+      <div class="spec"><span class="k">Degree</span><span class="v">BSc Aerospace Eng., AAUB · 2021–2026</span></div>
+      <div class="spec"><span class="k">CGPA</span><span class="v">3.51 / 4.00 (thru 7th sem.)</span></div>
+      <div class="spec"><span class="k">Thesis</span><span class="v">ML prediction of soft-body impact on composite stiffened panels</span></div>
+      <div class="spec"><span class="k">Focus</span><span class="v">Impact dynamics · FEA · Composites · CFD · ML surrogates</span></div>
+      <div class="spec"><span class="k">Scholarship</span><span class="v">Vice-Chancellor Scholarship</span></div>
+      <div class="spec"><span class="k">Status</span><span class="v">Prospective PhD applicant</span></div>
+      <div class="spec"><span class="k">Location</span><span class="v">Savar, Dhaka, Bangladesh</span></div>
+    </div>
+  </div>
+  <div class="stats rv">
+    <div class="stat"><div class="n"><span class="cnt" data-target="5" data-pad="2">00</span></div><div class="l">Journal papers</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-target="6" data-pad="2">00</span></div><div class="l">Conference papers</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-target="32">0</span><span>+</span></div><div class="l">Public simulations</div></div>
+    <div class="stat"><div class="n">#1</div><div class="l">National CAD champion</div></div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section id="research">
+  <div class="rv">
+    <div class="eyebrow">02 / Research output</div>
+    <h2>Publications</h2>
+    <p class="section-note">Five journal papers and six conference contributions spanning hydrogen-electric VTOL design, physics-guided machine learning for bird strike, multidisciplinary FEA, combustion CFD and lattice homogenization.</p>
+  </div>
+
+  <div class="pub-ticker rv" aria-hidden="true"><div class="ticker-track" id="ticker">
+    <span>Hydrogen-Electric VTOL Retrofit — Designs (MDPI)</span><span class="dot">◆</span>
+    <span>Physics-Guided ML Surrogates for Bird Strike — Modelling (MDPI)</span><span class="dot">◆</span>
+    <span>Multidisciplinary FEA of an Electric Three-Wheeler — Technical Gazette</span><span class="dot">◆</span>
+    <span>Bioethanol Vapor Substitution CFD — J. Engineering (Wiley)</span><span class="dot">◆</span>
+    <span>Automated Homogenization in Lattice Structures — Engineering Reports (Wiley)</span><span class="dot">◆</span>
+    <span>IOCAE 2026 — 5 Conference Papers — MDPI Sciforum</span><span class="dot">◆</span>
+  </div></div>
+
+  <div class="rv">
+    <article class="jpub">
+      <div class="jnum">J-01</div>
+      <div class="jmain">
+        <div class="jmeta"><span class="status st-pub">Published</span><span class="fa-tag">★ First author</span><span class="jvenue">Designs — MDPI</span></div>
+        <h3>Conceptual Retrofit of a Hydrogen-Electric VTOL Rotorcraft: The Hawk Demonstrator Simulation</h3>
+        <p class="jauth"><mark>Sajid, J. A.</mark>, et al.</p>
       </div>
+      <a class="jdoi" href="https://doi.org/10.3390/designs10010009" target="_blank" rel="noopener">DOI ↗</a>
+    </article>
+    <article class="jpub">
+      <div class="jnum">J-02</div>
+      <div class="jmain">
+        <div class="jmeta"><span class="status st-pub">Published</span><span class="jvenue">Modelling — MDPI</span></div>
+        <h3>Physics-Guided Machine Learning Surrogates for Bird Strike Analysis on Rotating Jet Engine Blades Through a Comparative Study of Lagrangian and SPH Simulations</h3>
+        <p class="jauth">Nabil, M. K. H.; <mark>Sajid, J. A.</mark>; et al.</p>
+      </div>
+      <a class="jdoi" href="https://doi.org/10.3390/modelling7030080" target="_blank" rel="noopener">DOI ↗</a>
+    </article>
+    <article class="jpub">
+      <div class="jnum">J-03</div>
+      <div class="jmain">
+        <div class="jmeta"><span class="status st-acc">Accepted · Feb 2027 issue</span><span class="fa-tag">★ First author</span><span class="jvenue">Technical Gazette</span></div>
+        <h3>Structural and Safety Design of a Low-Cost Electric Three-Wheeler for Dense Urban Traffic Using a Multidisciplinary FEA Approach</h3>
+        <p class="jauth"><mark>Sajid, J. A.</mark>, et al. — born from the national-champion Design Decode 1.0 concept</p>
+      </div>
+      <a class="jdoi" href="https://doi.org/10.20944/preprints202603.1246.v1" target="_blank" rel="noopener">Preprint DOI ↗</a>
+    </article>
+    <article class="jpub">
+      <div class="jnum">J-04</div>
+      <div class="jmain">
+        <div class="jmeta"><span class="status st-rev">Under review</span><span class="jvenue">Journal of Engineering — Wiley</span></div>
+        <h3>CFD Assessment of Bioethanol Vapor Substitution in a Methane-Air Gas Turbine Combustor Using Matched Thermal Performance</h3>
+        <p class="jauth">Chawdhury, N. H. A.; Fayek, A.; <mark>Sajid, J. A.</mark>; et al.</p>
+      </div>
+      <span class="jdoi jdoi-dim">In review</span>
+    </article>
+    <article class="jpub">
+      <div class="jnum">J-05</div>
+      <div class="jmain">
+        <div class="jmeta"><span class="status st-rev">Under review</span><span class="jvenue">Engineering Reports — Wiley</span></div>
+        <h3>Topology-Dependent Evaluation of Automated Homogenization in Lattice Structures with Geometric Scaling</h3>
+        <p class="jauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</p>
+      </div>
+      <span class="jdoi jdoi-dim">In review</span>
+    </article>
+  </div>
+
+  <div class="rv" style="margin-top:80px">
+    <div class="eyebrow">02.1 / Conferences</div>
+    <h2 style="font-size:clamp(20px,2.4vw,28px)">Conference abstracts & proceedings</h2>
+    <p class="section-note" style="margin-bottom:30px">Five papers in the Proceedings of the 1st International Online Conference on Aerospace (IOCAE 2026), 16–17 April 2026, MDPI Sciforum — plus one submission to PLIN 2026.</p>
+  </div>
+  <div class="conf-list rv">
+    <div class="conf"><span class="tag">C-01 · IOCAE 2026 · FEA / Structures</span><p>Conceptual Design and Finite Element Validation of Alpha-11 Wing: Mesh Convergence, Structural Performance and Material Trade-offs</p><span class="cauth"><mark>Sajid, J. A.</mark>; et al. <em class="fa-tag">★ First author</em></span><a href="https://sciforum.net/paper/view/30328" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
+    <div class="conf"><span class="tag">C-02 · IOCAE 2026 · Lattices</span><p>Topology-Dependent Evaluation of Automated Homogenization for Lattice Structures in Aerospace Design</p><span class="cauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</span><a href="https://sciforum.net/paper/view/30331" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
+    <div class="conf"><span class="tag">C-03 · IOCAE 2026 · Rotorcraft</span><p>Conceptual Design and Initial Sizing of a Tiltrotor Aircraft: A Comprehensive Analytical Approach</p><span class="cauth">Hasan, M.; Islam, S.; <mark>Sajid, J.</mark>; Prodhan, M.</span><a href="https://sciforum.net/paper/view/30332" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
+    <div class="conf"><span class="tag">C-04 · IOCAE 2026 · FSI</span><p>Structural Analysis and Optimization of a Jet Trainer Aircraft Wing Using Fluid-Structure Interaction</p><span class="cauth">Mizan, M. R.; Hossain, S.; Rayhan, S. B.; <mark>Sajid, J. A.</mark></span><a href="https://sciforum.net/paper/view/30394" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
+    <div class="conf"><span class="tag">C-05 · IOCAE 2026 · Aircraft design</span><p>Conceptual Design and Preliminary Analysis of Carrier-Borne Fighter Aircraft</p><span class="cauth">Ahmaad, M. U.; Grgić, I.; <mark>Sajid, J. A.</mark>; Karakašić, M.</span><a href="https://sciforum.net/paper/view/30329" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
+    <div class="conf"><span class="tag">C-06 · PLIN 2026 · Submitted</span><p>Development of an ESP32-Based IoT Didactic Power Transmission Rig and Its Application in Laboratory Teaching</p><span class="cauth">17th International Natural Gas, Heat and Water Conference — submitted via EasyChair</span><span style="font-family:var(--font-m);font-size:11px;color:var(--dim);letter-spacing:.1em">UNDER SUBMISSION</span></div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="rv">
+    <div class="eyebrow">03 / Simulation gallery</div>
+    <h2>Featured simulations</h2>
+    <p class="section-note">A selection from 32+ publicly documented simulation studies — bird strike, ballistics, explosions, composites, CFD. Each links to a full technical breakdown.</p>
+  </div>
+  <div class="proj-grid rv">
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-02.png" alt="Full-frame jet engine bird strike simulation"></div><div class="body"><span class="tag">Explicit Dynamics · SPH</span><h3>Full-Frame Jet Engine Bird Strike on ANSYS Student Edition</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_jetengine-birdstrikesimulation-ansys-activity-7324862689388691457-GgTZ" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-20.png" alt="Soft body impact on composite stiffened panel"></div><div class="body"><span class="tag">ACP · Explicit Dynamics · Thesis</span><h3>Soft-Body Impact on Composite Stiffened Panel</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_simulation-lsdyna-fea-activity-7393671832165494784-aCHv" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-07.png" alt="Hudson river bird strike simulation"></div><div class="body"><span class="tag">Bird strike · Case study</span><h3>"Both Engines Down in Seconds" — Simulating the Hudson River Bird Strike</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_hudsonriver-birdstrike-ansys-activity-7360654943776653313-LtaG" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-06.png" alt="Lattice-infused stiffened panel impact analysis"></div><div class="body"><span class="tag">Lattices · FEA</span><h3>Lattice-Infused Stiffened Panel Impact Analysis</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7360966120108896258-XWdh" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-25.png" alt="The Hawk hydrogen VTOL concept"></div><div class="body"><span class="tag">VFS · Published in MDPI Designs</span><h3>The Hawk: Conceptual Hydrogen-Electric VTOL</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_vfscompetition-teamhawks-aerospaceengineering-activity-7369063429245939712-B4My" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-16.png" alt="Ballistic impact on Kevlar"></div><div class="body"><span class="tag">Ballistics · Composites</span><h3>Ballistic Impact on Kevlar — Material Response Under Fire</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballistics-kevlar-impactsimulation-activity-7410412736813174784-NmXP" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-32.png" alt="Explosion simulation ALE vs Lagrange"></div><div class="body"><span class="tag">LS-DYNA · ALE</span><h3>Explosion Simulation: ALE vs Lagrange</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-simulation-engineering-activity-7362893717428486145-e9hM" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-01.png" alt="Bird strike on rotating fan"></div><div class="body"><span class="tag">Rotating machinery · SPH</span><h3>Bird Strike — But This Time, the Fan Fights Back</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-birdstrike-activity-7323619785928294400-AOrc" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-29.png" alt="SPH ballistic art simulation"></div><div class="body"><span class="tag">SPH · Post-processing</span><h3>Art Is an Explosion — SPH + Dynamics + Ballistics</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_explicitdynamics-ansys-sph-activity-7364705326761238528-2Lvz" target="_blank" rel="noopener">Open study ↗</a></div></article>
+  </div>
+
+  <details class="more-sims rv">
+    <summary>Full simulation log — 23 more studies <span class="hint">[ expand ]</span></summary>
+    <div class="sim-list">
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysfluent-simulationengineering-activity-7335700482394353665-sZ-Z" target="_blank" rel="noopener"><span class="idx">03</span>Transient CFD on ANSYS Fluent — airflow limits</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_rotorcraftdesign-cfdsimulation-aerospaceengineering-activity-7334985062100135936-_dzt" target="_blank" rel="noopener"><span class="idx">04</span>Rotorcraft CFD — post-exam CFD study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysdiscovery-ansysfluent-activity-7327696310243840000-04fU" target="_blank" rel="noopener"><span class="idx">05</span>G-Wagon in a virtual wind tunnel</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_caddesign-rover-robotics-activity-7355281333075554305-dxDz" target="_blank" rel="noopener"><span class="idx">08</span>The Rovniper — rover CAD & design</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_structural-material-selection-and-validation-activity-7352729721811460096-a0Ev" target="_blank" rel="noopener"><span class="idx">09</span>UAV material validation — ANSYS + SolidWorks</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_comparative-study-of-strain-distribution-activity-7352668295457583104-E_qJ" target="_blank" rel="noopener"><span class="idx">10</span>Comparative strain distribution study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansys-biomechanics-activity-7337900301040898049-bY4h" target="_blank" rel="noopener"><span class="idx">11</span>Biomechanical CFD — cough dispersion in confined spaces</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballisticsimulation-kevlar-explicitdynamics-activity-7327368017955147777-psWE" target="_blank" rel="noopener"><span class="idx">12</span>Advanced ballistic impact — material response</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-buschassis-fea-activity-7314823420863504385-8s6c" target="_blank" rel="noopener"><span class="idx">13</span>Bus chassis structural simulation</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_fea-ansys-explicitdynamics-activity-7310973699451490305-vI72" target="_blank" rel="noopener"><span class="idx">14</span>Impact on RC beam — Explicit Dynamics</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="idx">15</span>Eigenvalue buckling of stiffened panel</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7439004546691100672-l7RA" target="_blank" rel="noopener"><span class="idx">17</span>Ballistic impact on skeletal head</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="idx">18</span>Impact analysis on lattice structures</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-ugcPost-7366453108358426625-L0oP/" target="_blank" rel="noopener"><span class="idx">19</span>Water vs head — fluid impact</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-composites-activity-7388937773107466240-rS3v" target="_blank" rel="noopener"><span class="idx">21</span>3-point bending of composite beam (ACP)</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-combustionmodeling-biogas-activity-7374465390342475776-FcQM" target="_blank" rel="noopener"><span class="idx">22</span>CFD simulation of biogas combustion</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-birdstrike-simulation-activity-7371561186217066496-9E-e" target="_blank" rel="noopener"><span class="idx">23</span>Bird strike on leading edge — reinforcement study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-birdstrike-aerospace-activity-7369439114904981504-m0bI" target="_blank" rel="noopener"><span class="idx">24</span>SPH bird strike at 201 fps</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fluent-cfd-activity-7368290969810612225-SnQx" target="_blank" rel="noopener"><span class="idx">26</span>Two vs four wheels — dynamic Fluent study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-activity-7367959511292112896-3Pr9" target="_blank" rel="noopener"><span class="idx">27</span>Impact on ribs — biomechanics</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-simulation-activity-7367585432093622273-vyVT" target="_blank" rel="noopener"><span class="idx">28</span>Hyperelastic material under impact</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-cfd-simulation-activity-7364348130806444035-quLG" target="_blank" rel="noopener"><span class="idx">30</span>Dynamic simulation of Hellfire R9X missile</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-ansys-simulation-activity-7363239698539888643-Qnnr" target="_blank" rel="noopener"><span class="idx">31</span>Friction turning into heat — LS-DYNA</a>
+    </div>
+  </details>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="rv">
+    <div class="eyebrow">04 / Trajectory</div>
+    <h2>Experience & competitions</h2>
+    <p class="section-note">From national design competitions to industrial MRO floors to simulation engineering internships.</p>
+  </div>
+  <div class="tl rv">
+    <div class="tl-item">
+      <span class="when">2025 — 2026</span>
+      <h3>Intern Simulation Engineer</h3>
+      <div class="org">Simulation Support BD</div>
+      <p>FEA and impact-dynamics work in a professional engineering simulation environment — structural analysis and simulation-driven design tasks for client problems.</p>
+    </div>
+    <div class="tl-item">
+      <span class="when">Jun — Jul 2025</span>
+      <h3>Industrial Trainee / Visiting Scholar</h3>
+      <div class="org">Biman Bangladesh Airlines & BAF MROU 214 / 216</div>
+      <p>Four-week industrial placement inside airline and air force maintenance, repair and overhaul units — hands-on exposure to aerospace maintenance and operational systems.</p>
+    </div>
+    <div class="tl-item">
+      <span class="when">2025 — 2026</span>
+      <h3>Simulation Lead — 42nd VFS Design Competition</h3>
+      <div class="org">Team Hawks · Bangladesh University of Professionals</div>
+      <p>Led system-level simulation and performance evaluation of a conceptual surveillance aircraft under defined payload and mission constraints, feeding multidisciplinary design decisions.</p>
+    </div>
+    <div class="tl-item">
+      <span class="when">2024 — 2025</span>
+      <h3>Design & Simulation Engineer — 41st VFS Design Competition</h3>
+      <div class="org">Team AGNI · Aviation and Aerospace University, Bangladesh</div>
+      <p>Performance analysis and aerodynamic/structural design support for a UAV built for disaster-prone operating environments.</p>
+      <span class="result">18th globally</span>
+    </div>
+    <div class="tl-item">
+      <span class="when">2024</span>
+      <h3>Team Member — AIAA Design/Build/Fly</h3>
+      <div class="org">Team Airborne Phoenix · AAUB</div>
+      <p>CAD modeling, structural considerations, fabrication support, testing and system-level performance evaluation of a mission-based UAV.</p>
+      <span class="result">36th worldwide · 1st in Bangladesh</span>
+    </div>
+    <div class="tl-item">
+      <span class="when">2023 — 2024</span>
+      <h3>Team Lead — Design Decode 1.0</h3>
+      <div class="org">SCADR RUET · National CAD Competition</div>
+      <p>Led the winning team on a mobility solution for dense urban traffic: an optimized auto-rickshaw concept validated through CAD and multidisciplinary FEA, balancing structure, safety and cost — later developed into a journal paper.</p>
+      <span class="result">National champion</span>
     </div>
   </div>
 </section>
 
-<section id="education" class="py-12 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl font-bold text-gray-800 mb-2">Education</h2>
-      <div class="h-1 w-20 bg-blue-600 mx-auto"></div>
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="rv">
+    <div class="eyebrow">05 / Toolchain</div>
+    <h2>Skills & certifications</h2>
+  </div>
+  <div class="sk-grid rv" style="margin-top:40px">
+    <div class="sk">
+      <h3>// Simulation & analysis</h3>
+      <div class="chips"><span class="chip">ANSYS Mechanical</span><span class="chip">Explicit Dynamics</span><span class="chip">LS-DYNA</span><span class="chip">ANSYS Fluent (CFD)</span><span class="chip">ACP Composites</span><span class="chip">SPH Methods</span><span class="chip">FEA</span><span class="chip">Structural Design</span><span class="chip">Impact Dynamics</span></div>
     </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
-        <h4 class="font-bold text-gray-900 mb-1">Aviation and Aerospace University, Bangladesh (AAUB)</h4>
-        <p class="text-gray-700 font-medium">BSc in Aerospace Engineering</p>
-        <p class="text-sm text-gray-500 mb-3">2021 - June 2026 (Expected)</p>
-        <p class="text-blue-700 font-bold">CGPA: 3.51 / 4.00</p>
-        <span class="text-xs text-gray-400">(Till 7th Semester)</span>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
-        <h4 class="font-bold text-gray-900 mb-1">Notre Dame College, Bangladesh</h4>
-        <p class="text-gray-700 font-medium">HSC</p>
-        <p class="text-sm text-gray-500 mb-3">2019 - 2021</p>
-        <p class="text-blue-700 font-bold">GPA: 5.00 / 5.00</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-blue-600">
-        <h4 class="font-bold text-gray-900 mb-1">Morning Glory School and College</h4>
-        <p class="text-gray-700 font-medium">SSC</p>
-        <p class="text-sm text-gray-500 mb-3">Graduated 2019</p>
-        <p class="text-blue-700 font-bold">GPA: 5.00 / 5.00</p>
-      </div>
+    <div class="sk">
+      <h3>// Design & manufacturing</h3>
+      <div class="chips"><span class="chip">SolidWorks (CSWP)</span><span class="chip">CAD / 3D Modeling</span><span class="chip">Additive Manufacturing</span><span class="chip">Design Optimization</span><span class="chip">Topology Optimization</span></div>
+    </div>
+    <div class="sk">
+      <h3>// Computing & data</h3>
+      <div class="chips"><span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">Machine Learning Surrogates</span><span class="chip">Numerical Methods</span><span class="chip">KeyShot</span><span class="chip">Adobe Photoshop</span></div>
+    </div>
+    <div class="sk">
+      <h3>// Certifications</h3>
+      <div class="cert-row"><span class="c">Certified SolidWorks Professional (CSWP)</span><span class="y">2025</span></div>
+      <div class="cert-row"><span class="c">Certified SolidWorks Associate (CSWA)</span><span class="y">2024</span></div>
+      <div class="cert-row"><span class="c">CSWA — Additive Manufacturing</span><span class="y">2024</span></div>
+      <div class="cert-row"><span class="c">10+ ANSYS course certifications</span><span class="y">2025</span></div>
+      <div class="cert-row"><span class="c">COMSOL Multiphysics workshop (BUET)</span><span class="y">2025</span></div>
     </div>
   </div>
 </section>
 
-<section id="achievements" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Key Achievements</h2>
-    
-    <div class="bg-orange-50 border-l-4 border-orange-500 p-8 rounded-r-lg">
-      <h3 class="text-xl font-bold text-orange-900 mb-4 underline decoration-orange-300">
-        National CAD Champion (SCADR RUET) - Winner in Design Decode 1.0
-      </h3>
-      <p class="text-gray-700 text-lg text-justify leading-relaxed">
-        Led the team <strong>(The Noobs)</strong> as the team leader and won in a national-level engineering design competition focused on solving a real-world mobility problem. 
-        Developed an optimized auto-rickshaw concept through CAD modeling and engineering analysis, balancing structural performance, safety, and cost constraints. 
-        Conducted design validation using simulation tools and ensured feasibility under practical limitations, ultimately securing 1st position among competing teams.
-      </p>
-      <br>
-      <p>
-        <h3 class="text-xl font-bold text-orange-900 mb-4 underline decoration-orange-300">
-        AIAA Design Build Fly 2024– Team Airborne Phoenix (Aviation and Aerospace University, Bangladesh)
-      </h3>
-      <p class="text-gray-700 text-lg text-justify leading-relaxed">
-        Contributed to the design and development of a mission-based UAV folowing AIAA RFP requirements. Involved in CAD
-        modeling, structural considerations, and system-level performance evaluation, along with participation in fabrication
-        and testing. The team achieved 36th position worldwide, ranking 1st among Bangladeshi teams.
-      </p>
-      </p> 
-      
-      <br>
-      <p>
-        <h3 class="text-xl font-bold text-orange-900 mb-4 underline decoration-orange-300">
-        41st Vertical Flight Society Design Competition– Team AGNI (Aviation and Aerospace University, Bangladesh)
-      </h3>
-      <p class="text-gray-700 text-lg text-justify leading-relaxed">
-        Worked as a Design and Simulation Engineer for a UAV intended for operations in disaster-prone environments.
-        Performed performance analysis and contributed to aerodynamic and structural design decisions using simulation tools.
-        The team secured 18th position globaly among international participants.
-      </p>
-      </p> 
-      
-      <br>
-      <p>
-        <h3 class="text-xl font-bold text-orange-900 mb-4 underline decoration-orange-300">
-        42nd Vertical Flight Society Design Competition– Team Hawks (Bangladesh University of Professionals)
-      </h3>
-      <p class="text-gray-700 text-lg text-justify leading-relaxed">
-        Served as Simulation Lead for a conceptual aircraft designed for survei lance and detection missions under specific
-        payload and operational constraints. Led system-level simulation and contributed to performance evaluation and
-        design optimization within a multidisciplinary team environment.
-      </p>
-      </p> 
+<!-- ================= REFERENCES + CONTACT ================= -->
+<section id="contact">
+  <div class="rv">
+    <div class="eyebrow">06 / References</div>
+    <h2>Academic references</h2>
+  </div>
+  <div class="ref-grid rv" style="margin:40px 0 90px">
+    <div class="ref"><h3>Dr. Saiaf Bin Rayhan</h3><div class="role">Assistant Professor, Dept. of Aerospace Engineering<br>Aviation and Aerospace University, Bangladesh</div><a href="mailto:rayhan.saiaf@mail.nwpu.edu.cn">rayhan.saiaf@mail.nwpu.edu.cn</a></div>
+    <div class="ref"><h3>Dr. Ivan Grgić</h3><div class="role">Assistant Professor, Dept. for Mechanical Engineering<br>University of Slavonski Brod, Croatia</div><a href="mailto:igrgic@unisb.hr">igrgic@unisb.hr</a></div>
+    <div class="ref"><h3>Siam Shakil</h3><div class="role">Senior Mechanical Design Engineer<br>BJIT Ltd.</div><a href="https://www.linkedin.com/in/siam-shakil" target="_blank" rel="noopener">LinkedIn profile ↗</a></div>
+  </div>
 
+  <div class="contact rv">
+    <div class="eyebrow" style="justify-content:center">07 / Contact</div>
+    <h2>Let's run the next case together</h2>
+    <p>Open to PhD opportunities, research collaboration and simulation engineering work in computational mechanics, impact dynamics and aerospace structures.</p>
+    <div class="row">
+      <a class="btn btn-solid" href="mailto:sajid.jubayer2@gmail.com">sajid.jubayer2@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/jubayer-ahmed-sajid-5205a3336" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.researchgate.net/profile/Jubayer-Sajid" target="_blank" rel="noopener">ResearchGate</a>
+      <a class="btn" href="tel:+8801953657128">+880 1953-657128</a>
     </div>
   </div>
 </section>
+</main>
 
+<footer>
+  <span>© 2026 Jubayer Ahmed Sajid</span>
+  <span>Savar, Dhaka, Bangladesh · sajid-22014029@aaub.edu.bd</span>
+</footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============ scroll reveals ============ */
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
 
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project Card -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-01.png" alt="Project 1" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">1. 🚀 Bird Strike Simulation – But This Time, the Fan Fights Back! 🦅🛞</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-birdstrike-activity-7323619785928294400-AOrc?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div>
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-02.png" alt="Project 2" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">2. First-Ever Full-Frame Jet Engine Bird Strike on ANSYS Student Edition </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_jetengine-birdstrikesimulation-ansys-activity-7324862689388691457-GgTZ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div>
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-03.png" alt="Project 3" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">3. 🚀 Just wrapped up a transient CFD simulation on ANSYS Fluent — pushing the limits of airflow analysis!</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysfluent-simulationengineering-activity-7335700482394353665-sZ-Z?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this-->
-        
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-4.png" alt="Project 4" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">4. Back from Exam Hibernation with Some Serious CFD Magic! ✨</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_rotorcraftdesign-cfdsimulation-aerospaceengineering-activity-7334985062100135936-_dzt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this-->
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="wagon.png" alt="Project 5" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">5. 🚗💨 G-Wagon Meets the Wind Tunnel – Virtually!</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysdiscovery-ansysfluent-activity-7327696310243840000-04fU?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+/* ============ hero simulation ============ */
+(function(){
+  const canvas=document.getElementById('sim');
+  if(!canvas||typeof THREE==='undefined')return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-06.png" alt="Project 6" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">6. Simulating the Future of Aerospace Structures – Lattice-Infused Stiffened Panel Impact Analysis ✈️🌊</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7360966120108896258-XWdh?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-07.png" alt="Project 7" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">7. 💥 "Both Engines Down in Seconds" – Simulating the Hudson River Bird Strike on ANSYS</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_hudsonriver-birdstrike-ansys-activity-7360654943776653313-LtaG?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* adaptive quality: phones get a lighter scene */
+  const small=Math.min(window.innerWidth,window.innerHeight)<768||window.matchMedia('(pointer:coarse)').matches;
+  const SX=small?38:64, SY=small?22:38;      /* panel mesh density */
+  const N=small?200:380;                      /* SPH particles */
+  const DN=small?110:260;                     /* ambient dust */
+  const FRAME_SKIP=small?1:0;                 /* render every 2nd frame on mobile (~30fps) */
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-08.png" alt="Project 8" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">8. The Rovniper!</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_caddesign-rover-robotics-activity-7355281333075554305-dxDz?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:!small,alpha:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,small?1.5:2));
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.Fog(0x070B12,55,120);
+  const camera=new THREE.PerspectiveCamera(46,2,0.1,300);
+  camera.position.set(20,9,34);
+  camera.lookAt(0,0,0);
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-09.png" alt="Project 9" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">9. 🚁 Simulation Meets Structure: Material Validation for UAV Design using ANSYS & SolidWorks 🧠🔧</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_structural-material-selection-and-validation-activity-7352729721811460096-a0Ev?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  const jetStops=[[0.0,0x10309F],[0.28,0x0FB4E8],[0.52,0x2BD97E],[0.76,0xF5D90A],[1.0,0xFF5B3A]].map(([t,h])=>[t,new THREE.Color(h)]);
+  function jet(t){
+    t=Math.max(0,Math.min(1,t));
+    for(let i=1;i<jetStops.length;i++){
+      if(t<=jetStops[i][0]){
+        const [t0,c0]=jetStops[i-1],[t1,c1]=jetStops[i];
+        return c0.clone().lerp(c1,(t-t0)/(t1-t0));
+      }
+    }
+    return jetStops[jetStops.length-1][1].clone();
+  }
+  const baseCol=new THREE.Color(0x1B3B6B);
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-10.png" alt="Project 10" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">10. 🚀 Stress, Strain & Smarter Designs – Powered by ANSYS 🧠💡</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_comparative-study-of-strain-distribution-activity-7352668295457583104-E_qJ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* ---- stiffened panel ---- */
+  const PW=34,PH=20;
+  const panelGeo=new THREE.PlaneGeometry(PW,PH,SX,SY);
+  const vcount=panelGeo.attributes.position.count;
+  const colors=new Float32Array(vcount*3);
+  for(let i=0;i<vcount;i++){colors[i*3]=baseCol.r;colors[i*3+1]=baseCol.g;colors[i*3+2]=baseCol.b;}
+  panelGeo.setAttribute('color',new THREE.BufferAttribute(colors,3));
+  const panel=new THREE.Mesh(panelGeo,new THREE.MeshBasicMaterial({wireframe:true,vertexColors:true,transparent:true,opacity:.9}));
+  scene.add(panel);
+  const basePos=panelGeo.attributes.position.array.slice();
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-11.png" alt="Project 11" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">11. 💨 Biomechanical CFD Simulation: COVID Coughing in Confined Spaces 🦠</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansys-biomechanics-activity-7337900301040898049-bY4h?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  const stiffMat=new THREE.MeshBasicMaterial({wireframe:true,color:0x27476E,transparent:true,opacity:.55});
+  for(let i=-2;i<=2;i++){
+    const s=new THREE.Mesh(new THREE.BoxGeometry(0.9,PH,1.6,1,small?6:10,2),stiffMat);
+    s.position.set(i*6.4,0,-1.0);
+    scene.add(s);
+  }
+  const frame=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(PW+1.2,PH+1.2)),new THREE.LineBasicMaterial({color:0x3E5E86,transparent:true,opacity:.8}));
+  scene.add(frame);
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-12.png" alt="Project 12" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">12.🛡️ Advanced Ballistic Impact Simulation: Material Response Under Fire</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballisticsimulation-kevlar-explicitdynamics-activity-7327368017955147777-psWE?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* ---- SPH projectile ---- */
+  const pGeo=new THREE.BufferGeometry();
+  const pPos=new Float32Array(N*3);
+  const pCol=new Float32Array(N*3);
+  const local=[]; const vel=[];
+  for(let i=0;i<N;i++){
+    const a=Math.random()*Math.PI*2, r=Math.pow(Math.random(),0.5)*1.15, zz=(Math.random()-0.5)*4.2;
+    local.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a)*r,zz));
+    vel.push(new THREE.Vector3());
+    const c=jet(0.25+Math.random()*0.25);
+    pCol[i*3]=c.r;pCol[i*3+1]=c.g;pCol[i*3+2]=c.b;
+  }
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  pGeo.setAttribute('color',new THREE.BufferAttribute(pCol,3));
+  const pMat=new THREE.PointsMaterial({size:small?0.42:0.34,vertexColors:true,transparent:true,opacity:.95,sizeAttenuation:true});
+  const cloud=new THREE.Points(pGeo,pMat);
+  scene.add(cloud);
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-13.png" alt="Project 13" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">13. 🚍 Structural Simulation of a Bus Chassis | Inspired by Research & Real-World Impact 💥</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-buschassis-fea-activity-7314823420863504385-8s6c?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* ---- ambient dust ---- */
+  const dPos=new Float32Array(DN*3);
+  for(let i=0;i<DN;i++){dPos[i*3]=(Math.random()-0.5)*160;dPos[i*3+1]=(Math.random()-0.5)*90;dPos[i*3+2]=(Math.random()-0.5)*160;}
+  const dGeo=new THREE.BufferGeometry();dGeo.setAttribute('position',new THREE.BufferAttribute(dPos,3));
+  scene.add(new THREE.Points(dGeo,new THREE.PointsMaterial({size:.16,color:0x2E4A6E,transparent:true,opacity:.5})));
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-14.png" alt="Project 14" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">14. Simulated impact on an RC beam using Explicit Dynamics in ANSYS! 🏗️💥</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_fea-ansys-explicitdynamics-activity-7310973699451490305-vI72?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  const grid=new THREE.GridHelper(180,small?40:60,0x16283F,0x101D30);
+  grid.position.y=-13;
+  scene.add(grid);
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-15.png" alt="Project 15" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">15. Eigen Value Buckling of Stiffened Panel</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* ---- loop state ---- */
+  const timeEl=document.getElementById('simTime');
+  const stateEl=document.getElementById('simState');
+  const CYCLE=6.4, FLIGHT=1.15, START_Z=44, SPEED=START_Z/FLIGHT;
+  const RIPPLE_END=FLIGHT+4.6;               /* ripple visually dead after this */
+  let impact={x:0,y:0}, nextImpact=()=>({x:(Math.random()-0.5)*14,y:(Math.random()-0.5)*8});
+  impact=nextImpact();
+  let mode='flight', t=0, last=performance.now();
+  let panelFlat=true, frameCount=0;
+  let mx=0,my=0,tx=0,ty=0;
+  if(!small){
+    window.addEventListener('pointermove',e=>{
+      tx=(e.clientX/window.innerWidth-0.5)*2;
+      ty=(e.clientY/window.innerHeight-0.5)*2;
+    },{passive:true});
+  }
 
-        <!-- Repeat for more projects ------------------------------------------------------------>
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-16.png" alt="Project 16" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">16. Ballistic Impact on Kevlar Analysis</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballistics-kevlar-impactsimulation-activity-7410412736813174784-NmXP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* pause when hero is off-screen or tab hidden */
+  let visible=true, pageActive=!document.hidden, rafId=null;
+  function running(){return visible&&pageActive&&!reduced;}
+  function kick(){if(running()&&rafId===null){last=performance.now();rafId=requestAnimationFrame(frameLoop);}}
+  const vio=new IntersectionObserver(es=>{visible=es[0].isIntersecting;kick();},{threshold:0.02});
+  vio.observe(canvas);
+  document.addEventListener('visibilitychange',()=>{pageActive=!document.hidden;kick();});
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-17.png" alt="Project 17" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">17. Ballistic Impact on Skeletal Head</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7439004546691100672-l7RA?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function resetCycle(){
+    impact=nextImpact();
+    mode='flight';
+    pMat.opacity=.95;
+    for(let i=0;i<N;i++)vel[i].set(0,0,0);
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-18.png" alt="Project 18" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">18. Impact Analysis on Lattice Structures</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAE167GkBIR1-tuL5i67dgc_1hVB853sWTpU" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function updateProjectile(tt,dt){
+    if(mode==='flight'){
+      const z=START_Z-SPEED*tt;
+      for(let i=0;i<N;i++){
+        const l=local[i];
+        pPos[i*3]=impact.x+l.x;
+        pPos[i*3+1]=impact.y+l.y;
+        pPos[i*3+2]=z+l.z;
+      }
+      if(z<=0.6){
+        mode='splash';
+        for(let i=0;i<N;i++){
+          const l=local[i];
+          const ang=Math.atan2(l.y,l.x);
+          const sp=6+Math.random()*14;
+          vel[i].set(Math.cos(ang)*sp,Math.sin(ang)*sp*0.8+2,2+Math.random()*7);
+        }
+        stateEl&&(stateEl.textContent='IMPACT — SPH DISPERSION');
+      }
+    }else{
+      if(pMat.opacity<=0)return;               /* particles gone: skip work */
+      for(let i=0;i<N;i++){
+        vel[i].y-=9.5*dt; vel[i].multiplyScalar(0.985);
+        pPos[i*3]+=vel[i].x*dt;
+        pPos[i*3+1]+=vel[i].y*dt;
+        pPos[i*3+2]+=vel[i].z*dt;
+        if(pPos[i*3+2]<0.2){pPos[i*3+2]=0.2;vel[i].z*=-0.25;}
+      }
+      const fade=(t-FLIGHT)/(CYCLE-FLIGHT);
+      pMat.opacity=Math.max(0,0.95*(1-fade*1.15));
+    }
+    pGeo.attributes.position.needsUpdate=true;
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-19.png" alt="Project 19" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">19. Water vs Head</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-ugcPost-7366453108358426625-L0oP/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function flattenPanel(){
+    const pos=panelGeo.attributes.position.array;
+    const col=panelGeo.attributes.color.array;
+    for(let i=0;i<vcount;i++){
+      pos[i*3+2]=0;
+      col[i*3]=baseCol.r;col[i*3+1]=baseCol.g;col[i*3+2]=baseCol.b;
+    }
+    panelGeo.attributes.position.needsUpdate=true;
+    panelGeo.attributes.color.needsUpdate=true;
+    panelFlat=true;
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-20.png" alt="Project 20" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">20. Soft Body Impact on Composite Stiffened Panel (ACP + Explicit Dynamics)</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_simulation-lsdyna-fea-activity-7393671832165494784-aCHv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function updatePanel(tt){
+    const ts=tt-FLIGHT;
+    if(ts<=0||tt>=RIPPLE_END){                 /* no active ripple: flatten once, then skip */
+      if(!panelFlat)flattenPanel();
+      return;
+    }
+    panelFlat=false;
+    const pos=panelGeo.attributes.position.array;
+    const col=panelGeo.attributes.color.array;
+    const A=2.4,sig=4.2,k=0.95,w=6.5;
+    const decay=Math.exp(-ts*0.9);
+    for(let i=0;i<vcount;i++){
+      const x=basePos[i*3],y=basePos[i*3+1];
+      const dx=x-impact.x,dy=y-impact.y,r=Math.sqrt(dx*dx+dy*dy);
+      const z=A*Math.exp(-(r*r)/(2*sig*sig))*Math.cos(k*r-w*ts)*decay;
+      pos[i*3+2]=z;
+      const c=Math.abs(z)/A;
+      const cc=c>0.02?jet(Math.min(1,c*1.15)):baseCol;
+      const blend=Math.min(1,c*3);
+      col[i*3]=baseCol.r+(cc.r-baseCol.r)*blend;
+      col[i*3+1]=baseCol.g+(cc.g-baseCol.g)*blend;
+      col[i*3+2]=baseCol.b+(cc.b-baseCol.b)*blend;
+    }
+    panelGeo.attributes.position.needsUpdate=true;
+    panelGeo.attributes.color.needsUpdate=true;
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-21.png" alt="Project 21" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">21. 3 point Bending Test on Composite Beam (ACP+ Static Structural)</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-composites-activity-7388937773107466240-rS3v?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function resize(){
+    const w=canvas.clientWidth,h=canvas.clientHeight;
+    if(canvas.width!==Math.floor(w*renderer.getPixelRatio())||canvas.height!==Math.floor(h*renderer.getPixelRatio())){
+      renderer.setSize(w,h,false);
+      camera.aspect=w/h;camera.updateProjectionMatrix();
+    }
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-22.png" alt="Project 22" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">22. CFD Simulation of Biogas Combustion</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-combustionmodeling-biogas-activity-7374465390342475776-FcQM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  function frameLoop(now){
+    if(!running()){rafId=null;return;}
+    rafId=requestAnimationFrame(frameLoop);
+    frameCount++;
+    if(FRAME_SKIP&&(frameCount&1))return;      /* ~30fps on mobile */
+    resize();
+    const dt=Math.min((now-last)/1000,0.06); last=now;
+    t+=dt;
+    if(t>=CYCLE){t=0;resetCycle();stateEl&&(stateEl.textContent='PROJECTILE IN FLIGHT');}
+    updateProjectile(t,dt);
+    updatePanel(t);
+    if(timeEl)timeEl.textContent=(t*0.004).toFixed(4);
+    if(!small){
+      mx+=(tx-mx)*0.04; my+=(ty-my)*0.04;
+      camera.position.x=20+mx*4;
+      camera.position.y=9-my*2.5;
+      camera.lookAt(0,0,2);
+    }
+    renderer.render(scene,camera);
+  }
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-23.png" alt="Project 23" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">23. Bird Strike on Leading edge (With vs Without Reinforcement)</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-birdstrike-simulation-activity-7371561186217066496-9E-e?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  if(reduced){
+    t=FLIGHT+0.35;
+    updateProjectile(FLIGHT-0.01,1/60);
+    updatePanel(t);
+    resize();
+    renderer.render(scene,camera);
+    window.addEventListener('resize',()=>{resize();renderer.render(scene,camera);});
+    if(timeEl)timeEl.textContent='0.0042';
+  }else{
+    kick();
+  }
+})();
+</script>
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-24.png" alt="Project 24" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">24. SPH BirdStrike on 201 FPS</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-birdstrike-aerospace-activity-7369439114904981504-m0bI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-25.png" alt="Project 25" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">25. The Hawk: Conceptual Hydrogen VTOL </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_vfscompetition-teamhawks-aerospaceengineering-activity-7369063429245939712-B4My?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-26.png" alt="Project 26" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">26. Two vs Four Wheel ( Dynamic Ansys Fluent Simulation)</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fluent-cfd-activity-7368290969810612225-SnQx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this-->
-        
-        
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-27.png" alt="Project 27" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">27. Impact on Ribs </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-activity-7367959511292112896-3Pr9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
-        
+<script>
+(function(){
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-28.png" alt="Project 28" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">28. HyperElastic Material under Impact </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-simulation-activity-7367585432093622273-vyVT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* scroll progress */
+  const bar=document.getElementById('progress');
+  function prog(){const h=document.documentElement;const max=h.scrollHeight-h.clientHeight;bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';}
+  window.addEventListener('scroll',prog,{passive:true});prog();
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-29.png" alt="Project 29" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">29. Art Is an Explosion (SPH+ Dynamics+ Ballistics+ High Post Processing)</h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_explicitdynamics-ansys-sph-activity-7364705326761238528-2Lvz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* duplicate ticker content for seamless loop */
+  const tick=document.getElementById('ticker');
+  if(tick)tick.innerHTML+=tick.innerHTML;
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-30.png" alt="Project 30" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">30. Dynamic Simulation of Hellfire R9X Missile </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-cfd-simulation-activity-7364348130806444035-quLG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
+  /* animated counters */
+  const pad=(n,p)=>String(n).padStart(p||1,'0');
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    const el=e.target,target=+el.dataset.target,p=+(el.dataset.pad||1);
+    if(reduced){el.textContent=pad(target,p);return;}
+    const t0=performance.now(),dur=1300;
+    (function step(now){
+      const k=Math.min(1,(now-t0)/dur),ease=1-Math.pow(1-k,3);
+      el.textContent=pad(Math.round(target*ease),p);
+      if(k<1)requestAnimationFrame(step);
+    })(t0);
+  }),{threshold:.6});
+  document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
 
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-31.png" alt="Project 31" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">31. Friction turning into Heat: LS DYNA </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-ansys-simulation-activity-7363239698539888643-Qnnr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
-
-        <!-- Repeat for more projects -->
-        <div class="project-card bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300">
-          <img src="project-32.png" alt="Project 32" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">32. Explosion Simulation (ALE vs Lagrange) </h3>
-            
-            <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-simulation-engineering-activity-7362893717428486145-e9hM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRy3SgBkgIanCkiBChIKBgUScYT4aEb5fY" class="text-blue-600 hover:underline">View Project</a>
-          </div>
-        </div> <!--copy upto this--> 
-
-
-      </div>
-    </div>
-  </section>
-
-<!-- Certificates Section -->
-<section id="certificates" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Certificates</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Compressible Flow in a Nozzle</h3>
-          <img src="Ansys Course Completion - Compressible Flow in a Nozzle_page-0001 (1).jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Compressible Flow in a Nozzle_page-0001 (1).jpg" class="text-blue-600 hover:underline">View Certificate</a>
-      </div>
-
-      <!-- Repeat for more certificates 2 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Formula SAE Chassis Analysis</h3>
-          <img src="Ansys Course Completion - Formula SAE Chassis Analysis.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 07,2025</p>
-        <a href="Ansys Course Completion - Formula SAE Chassis Analysis.jpg" class="text-blue-600 hover:underline">View Certificate</a>
-      </div>
-
-      <!-- Repeat for more certificates 3 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Getting Started with Ansys Mechanical</h3>
-          <img src="Ansys Course Completion - Getting Started with Ansys Mechanical.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 07,2025</p>
-        <a href="Ansys Course Completion - Getting Started with Ansys Mechanical.jpg" class="text-blue-600 hover:underline">View Certificate</a>
-      </div>
-      <!-- Repeat for more certificates 4 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">CIntro to Ansys Fluent</h3>
-          <img src="Ansys Course Completion - Intro to Ansys Fluent_page-0001 (1).jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Intro to Ansys Fluent_page-0001 (1).jpg" class="text-blue-600 hover:underline">View Certificate</a>
-        
-      </div>
-      <!-- Repeat for more certificates 5 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Simple Approximations of Fluid Flows</h3>
-          <img src="Ansys Course Completion - Simple Approximations of Fluid Flows.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 07,2025</p>
-        <a href="Ansys Course Completion - Simple Approximations of Fluid Flows.jpg" class="text-blue-600 hover:underline">View Certificate</a>
-        
-      </div>
-      <!-- Repeat for more certificates 6 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Strain in Deformation Analysis</h3>
-          <img src="Ansys Course Completion - Strain in Deformation Analysis_page-0001.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Strain in Deformation Analysis_page-0001.jpg" class="text-blue-600 hover:underline">View Certificate</a>
-        
-      </div>
-
-      <!-- Repeat for more certificates 7 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Stress Analysis in Solid Mechanics</h3>
-          <img src="Ansys Course Completion - Stress Analysis in Solid Mechanics.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 07,2025</p>
-        <a href="Ansys Course Completion - Stress Analysis in Solid Mechanics.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      <!-- Repeat for more certificates 8 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Structural Nonlinearity</h3>
-          <img src="Ansys Course Completion - Structural Nonlinearity_page-0001.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Structural Nonlinearity_page-0001.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-      
-      <!-- Repeat for more certificates 9 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Time Integration</h3>
-          <img src="Ansys Course Completion - Time Integration_page-0001.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Time Integration_page-0001.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      <!-- Repeat for more certificates 10 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">Topology Optimization Using Ansys Mechanical</h3>
-          <img src="Ansys Course Completion - Topology Optimization Using Ansys Mechanical_page-0001.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Ansys, July 08,2025</p>
-        <a href="Ansys Course Completion - Topology Optimization Using Ansys Mechanical_page-0001.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      <!-- Repeat for more certificates 11 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">COMSOL Multi Physics</h3>
-          <img src="COMSOL Participation Certificates.png" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">BUET, 9 June 2025</p>
-        <a href="COMSOL Participation Certificates.png" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      <!-- Repeat for more certificates 12 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">SOLIDWORKS Additive Manufacturing Associate</h3>
-          <img src="SOLIDWORKS Additive Manufacturing Associate.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Dassault Systèmes, January 2025 <br>Credential ID: C-2FMYWRKX56</p>
-        <a href="SOLIDWORKS Additive Manufacturing Associate.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      <!-- Repeat for more certificates 12 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">SOLIDWORKS Associate</h3>
-          <img src="SOLIDWORKS Associate.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Dassault Systèmes, January 2025 <br>Credential ID: C-2FMYWRKX56</p>
-        <a href="SOLIDWORKS Associate.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-      
-      <!-- Repeat for more certificates 12 -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex items-center mb-2">
-          <h3 class="text-xl font-semibold text-gray-800 flex-1">SOLIDWORKS Professional</h3>
-          <img src="SOLIDWORKS Professional.jpg" alt="Certificate Thumbnail" class="w-50 h-40 object-cover rounded-md ml-4">
-        </div>
-        <p class="text-gray-600 mb-4">Dassault Systèmes, April 2025 <br>Credential ID: C-RZ5AX4PUJ8</p>
-        <a href="SOLIDWORKS Professional.jpg" class="text-blue-600 hover:underline">View Certificate</a>        
-      </div> <!--copy upto here-->
-
-
-    </div>
-  </div>
-</section>
-
-<section id="conferences" class="py-16 bg-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Research & Publications</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
-      <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-blue-600">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-          <span class="mr-2">📄</span> Research and Journal Publications
-        </h3>
-        <ul class="space-y-6">
-          <li class="border-b pb-4 last:border-0">
-            <p class="text-gray-800 font-medium">Conceptual Retrofit of a Hydrogen–Electric VTOL Rotorcraft: The Hawk Demonstrator Simulation</p>
-            <a href="https://www.mdpi.com/2411-9660/10/1/9" class="text-sm text-blue-600 hover:underline font-semibold">DOI</a>
-          </li>
-          <li class="border-b pb-4 last:border-0">
-            <p class="text-gray-800 font-medium">Structural and Safety Design of a Low-Cost Electric Three-Wheeler for Dense Urban Traffic Using a Multidisciplinary FEA Approach</p>
-            <p class="text-xs text-orange-600 font-bold mt-1">National CAD Champion in Design Decode organized by SCADR RUET</p>
-            <a href="https://www.preprints.org/manuscript/202603.1246" class="text-sm text-blue-600 hover:underline font-semibold">DOI</a>
-          </li>
-          <li class="pb-4 last:border-0">
-            <p class="text-gray-800 font-medium">Physics-Guided Machine Learning Surrogates for Bird Strike Analysis on Rotating Jet Engine Blades Through a Comparative Study of Lagrangian and SPH Simulations</p>
-            <a href="https://www.preprints.org/manuscript/202603.1182" class="text-sm text-blue-600 hover:underline font-semibold">DOI</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-green-600">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-          <span class="mr-2">🎤</span> Conference Abstracts
-        </h3>
-        <ul class="space-y-4">
-          <li class="flex justify-between items-start gap-4 border-b pb-3 last:border-0">
-            <p class="text-gray-700 text-sm"><b>Conceptual Design and Finite Element Validation of Alpha-11 Wing: Mesh Convergence, Structural Performance and Material Trade-offs</b></p>
-            <a href="https://sciforum.net/paper/view/30328" class="text-xs text-blue-600 hover:underline font-bold">DOI</a>
-          </li>
-          <li class="flex justify-between items-start gap-4 border-b pb-3 last:border-0">
-            <p class="text-gray-700 text-sm"><b>Conceptual Design and Preliminary Analysis of Carrier-Borne Fighter Aircraft</b></p>
-            <a href="https://sciforum.net/paper/view/30329" class="text-xs text-blue-600 hover:underline font-bold">DOI</a>
-          </li>
-          <li class="flex justify-between items-start gap-4 border-b pb-3 last:border-0">
-            <p class="text-gray-700 text-sm"><b>Topology-Dependent Evaluation of Automated Homogenization for Lattice Structures in Aerospace Design</b></p>
-            <a href="https://sciforum.net/paper/view/30331" class="text-xs text-blue-600 hover:underline font-bold">DOI</a>
-          </li>
-          <li class="flex justify-between items-start gap-4 border-b pb-3 last:border-0">
-            <p class="text-gray-700 text-sm"><b>Conceptual Design and Initial Sizing of a Tiltrotor Aircraft: A Comprehensive Analytical Approach</b></p>
-            <a href="https://sciforum.net/paper/view/30332" class="text-xs text-blue-600 hover:underline font-bold">DOI</a>
-          </li>
-          <li class="flex justify-between items-start gap-4 last:border-0">
-            <p class="text-gray-700 text-sm"><b>Structural Analysis and Optimization of a Jet Trainer Aircraft Wing Using Fluid–Structure Interaction</b></p>
-            <a href="https://sciforum.net/paper/view/30394" class="text-xs text-blue-600 hover:underline font-bold">DOI</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="gallery" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">My Work Journey</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex flex-col md:flex-row items-start mb-2">
-          <img src="work-1.JPG" alt="Work Journey Thumbnail" class="w-80 h-60 object-cover rounded-md mr-4 mb-4 md:mb-0">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Biman Bangladesh Airlines and BAF MROU 214 & 216 (Industrial Trainee)</h3>
-            <p class="text-sm font-medium text-blue-600 mb-2">June – July, 2025</p>
-            <p class="text-gray-600 text-justify">
-              Worked as an industrial trainee at MROU 214, 216 of Bangladesh Air Force (BAF) & Biman Bangladesh Airlines for 4 weeks as part of my Aerospace Engineering program.
-            </p>
-          </div>
-        </div>
-        <a href="work-1.JPG" class="text-blue-600 hover:underline">View Image</a>
-      </div>
-
-      <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-        <div class="flex flex-col md:flex-row items-start mb-2">
-          <img src="sajid_internship_pic.jpeg" alt="Work Journey Thumbnail" class="w-80 h-60 object-cover rounded-md mr-4 mb-4 md:mb-0">
-          <div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Simulation Support BD (Intern Simulation Engineer)</h3>
-            <p class="text-sm font-medium text-blue-600 mb-2">Present</p>
-            <p class="text-gray-600 text-justify">
-              Working as an FEA and Impact Dynamics Expert, focusing on structural analysis and simulation-driven engineering solutions.
-            </p>
-          </div>
-        </div>
-        <a href="sajid_internship_pic.jpeg" class="text-blue-600 hover:underline">View Image</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="reference" class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">References</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
-      <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-600 shadow-sm">
-        <h3 class="text-xl font-bold text-gray-900">Dr. Saiaf Bin Rayhan</h3>
-        <p class="text-blue-700 font-medium">Assistant Professor</p>
-        <p class="text-gray-600 text-sm">Department of Aeronautical Engineering</p>
-        <p class="text-gray-600 text-sm">Aviation & Aerospace University, Bangladesh</p>
-        <p class="mt-2 text-gray-800 font-semibold">Email: <a href="mailto:rayhan.saiaf@mail.nwpu.edu.cn" class="text-blue-600 hover:underline">rayhan.saiaf@mail.nwpu.edu.cn</a></p>
-      </div>
-
-      <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400 shadow-sm">
-        <h3 class="text-xl font-bold text-gray-900">Siam Shakil</h3>
-        <p class="text-blue-700 font-medium">Senior Mechanical Design Engineer</p>
-        <p class="text-gray-600 text-sm">BJIT LTD</p>
-        <p class="mt-2 text-gray-800 font-semibold"><a href="https://www.linkedin.com/in/siam-shakil?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a></p>
-      </div>
-
-      <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-600 shadow-sm">
-        <h3 class="text-xl font-bold text-gray-900">Dr. Ivan Grgić</h3>
-        <p class="text-blue-700 font-medium">Assistant Professor</p>
-        <p class="text-gray-600 text-sm">Department for Mechanical Design</p>
-        <p class="text-gray-600 text-sm">University of Slavonski Brod, Croatia</p>
-        <p class="mt-2 text-gray-800 font-semibold">Email: <a href="mailto:igrgic@unisb.hr" class="text-blue-600 hover:underline">igrgic@unisb.hr</a></p>
-      </div>
-
-      <!-- <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400 shadow-sm">
-        <h3 class="text-xl font-bold text-gray-900">Seeyama Hossain</h3>
-        <p class="text-blue-700 font-medium">Mechanical Design Engineer</p>
-        <p class="text-gray-600 text-sm">BJIT LTD</p>
-        <p class="mt-2 text-gray-800 font-semibold">No: +8801843673315</p>
-      </div> -->
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- Connect Section with Social Icons -->
-  <section id="connect" class="py-16 bg-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Connect With Me</h2>
-      <div class="flex justify-center space-x-8 md:space-x-12">
-        <a href="https://linkedin.com/in/jubayer-ahmed-sajid-5205a3336" target="_blank" class="social-icon">
-          <svg class="w-16 h-16 text-blue-600 hover:text-blue-800" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.028-3.06-1.867-3.06-1.867 0-2.152 1.459-2.152 2.966v5.698h-3v-11h2.883v1.509h.041c.402-.764 1.386-1.567 2.851-1.567 3.048 0 3.61 2.006 3.61 4.616v6.442z"/>
-          </svg>
-        </a>
-        <a href="sajid.jubayer2@gmail.com" class="social-icon">
-          <svg class="w-16 h-16 text-blue-600 hover:text-blue-800" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
-          </svg>
-        </a>
-
-        <a href="https://www.researchgate.net/profile/Jubayer-Sajid" target="_blank" class="social-icon">
-          <svg class="w-16 h-16 text-blue-600 hover:text-blue-800" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z"/>
-          </svg>
-        </a>
-        
-        </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p>&copy; 2025 Jubayer Ahmed Sajid. All rights reserved.</p>
-      <p>Mobile : +8801953657128</p>
-      <p>Email : sajid.jubayer2@gmail.com</p>
-      <br>
-    <div class="text-center text-gray-400 mt-2">
-      <p>
-        © Website created by <a href="https://www.linkedin.com/in/md-khalid-hasan-nabil-01541mon1/" class="text-blue-300 hover:underline" >Khalid Hasan</a>
-      </p>
-    </div>   
-    
-  </footer>
-
-  <!-- JavaScript for Mobile Menu Toggle -->
-  <script>
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Close mobile menu when a link is clicked
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.style.display = 'none';
+  /* 3D tilt on project cards */
+  if(!reduced&&window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.proj').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-0.5, y=(e.clientY-r.top)/r.height-0.5;
+        card.style.transition='transform .08s ease-out';
+        card.style.transform='perspective(800px) rotateX('+(-y*6)+'deg) rotateY('+(x*7)+'deg) translateY(-4px)';
+      });
+      card.addEventListener('pointerleave',()=>{
+        card.style.transition='transform .45s ease';
+        card.style.transform='';
       });
     });
-  </script>
+  }
+})();
+</script>
 </body>
 </html>
-
