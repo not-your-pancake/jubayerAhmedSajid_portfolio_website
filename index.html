@@ -3,593 +3,794 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jubayer Ahmed Sajid — Aerospace Engineer · Impact Dynamics & FEA</title>
-<meta name="description" content="Portfolio of Jubayer Ahmed Sajid: aerospace engineering researcher specializing in impact dynamics, composite structures, FEA/CFD simulation and ML-driven engineering.">
+<title>Jubayer Ahmed Sajid — Aerospace Engineer · Impact Dynamics & Computational Mechanics</title>
+<meta name="description" content="Jubayer Ahmed Sajid — aerospace engineering researcher. Impact dynamics, composite structures, FEA/CFD and machine-learning surrogates. Published in MDPI Designs & Modelling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#070B12;
-  --bg2:#0B1220;
-  --panel:#0D1524;
-  --line:rgba(148,180,220,.13);
-  --line2:rgba(148,180,220,.22);
-  --text:#DCE6F2;
-  --muted:#8296AE;
-  --dim:#5A6B82;
-  --c-blue:#1E4FD8;
-  --c-cyan:#0FB4E8;
-  --c-green:#2BD97E;
-  --c-yellow:#F5D90A;
-  --c-red:#FF5B3A;
-  --jet:linear-gradient(90deg,#10309F,#0FB4E8,#2BD97E,#F5D90A,#FF5B3A);
-  --font-d:'Chakra Petch',sans-serif;
-  --font-b:'IBM Plex Sans',sans-serif;
-  --font-m:'IBM Plex Mono',monospace;
+  --bg:#F6F7F8;
+  --card:#FFFFFF;
+  --ink:#0F1215;
+  --ink2:#24292E;
+  --muted:#5C6670;
+  --dim:#9AA3AC;
+  --line:rgba(15,18,21,.12);
+  --line2:rgba(15,18,21,.26);
+  --accent:#1E46D9;
+  --green:#188A54;
+  --amber:#B98312;
+  --jet:linear-gradient(90deg,#2450B8,#0E9BC4,#18A860,#E0A317,#E05C33);
+  --sh-s:0 1px 2px rgba(15,18,21,.05),0 1px 3px rgba(15,18,21,.04);
+  --sh-l:0 18px 40px rgba(15,18,21,.10),0 4px 12px rgba(15,18,21,.05);
+  --fd:'Archivo',sans-serif;
+  --fs:'Instrument Serif',serif;
+  --fb:'Inter',sans-serif;
+  --fm:'IBM Plex Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.65;overflow-x:hidden}
-::selection{background:var(--c-cyan);color:#04121C}
-a{color:var(--c-cyan);text-decoration:none}
-a:hover{text-decoration:underline}
-a:focus-visible,button:focus-visible{outline:2px solid var(--c-cyan);outline-offset:3px}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.65;overflow-x:hidden}
+::selection{background:var(--ink);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+em,i{font-family:var(--fs);font-style:italic;font-weight:400}
 
-/* ---------- NAV ---------- */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(7,11,18,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-logo{font-family:var(--font-m);font-size:13px;letter-spacing:.14em;color:var(--text)}
-.nav-logo b{color:var(--c-cyan)}
-.nav-links{display:flex;gap:26px;flex-wrap:wrap}
-.nav-links a{font-family:var(--font-m);font-size:11.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.nav-links a:hover{color:var(--c-cyan);text-decoration:none}
+/* paper grain */
+body::before{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.03;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 7s steps(8) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-2%)}100%{transform:translate(0,0)}}
 
-/* ---------- HERO ---------- */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden}
-#sim{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hero-fade{position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none}
-.hud{position:absolute;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;color:var(--muted);pointer-events:none;text-transform:uppercase}
-.hud-tl{top:76px;left:28px}
-.hud-tr{top:76px;right:28px;text-align:right}
-.hud-tr .live{color:var(--c-green)}
-.hud small{color:var(--dim)}
-.hud-corner{position:absolute;width:22px;height:22px;border:1px solid var(--line2);pointer-events:none}
-.hc1{top:66px;left:16px;border-right:none;border-bottom:none}
-.hc2{top:66px;right:16px;border-left:none;border-bottom:none}
-.hc3{bottom:16px;left:16px;border-right:none;border-top:none}
-.hc4{bottom:16px;right:16px;border-left:none;border-top:none}
-.hero-copy{position:absolute;left:0;right:0;bottom:110px;padding:0 28px;max-width:1200px;margin:0 auto;pointer-events:none}
-.hero-copy .eyebrow{pointer-events:auto}
-h1{font-family:var(--font-d);font-weight:700;font-size:clamp(38px,6.2vw,86px);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase}
-h1 .thin{display:block;font-weight:500;color:var(--muted);font-size:.42em;letter-spacing:.22em;margin-bottom:14px}
-h1 .grad{background:var(--jet);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-sub{margin-top:18px;max-width:640px;color:var(--muted);font-size:15.5px}
-.hero-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
-.btn{font-family:var(--font-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--line2);color:var(--text);background:rgba(13,21,36,.6);transition:border-color .2s,background .2s}
-.btn:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-decoration:none}
-.btn-solid{background:var(--c-cyan);color:#04121C;border-color:var(--c-cyan);font-weight:500}
-.btn-solid:hover{background:#3FC8F0;color:#04121C}
-/* deformation legend */
-.legend{position:absolute;left:28px;bottom:26px;font-family:var(--font-m);font-size:10px;color:var(--muted);letter-spacing:.08em}
-.legend-bar{width:220px;height:8px;background:var(--jet);border:1px solid rgba(255,255,255,.15);margin:6px 0 4px}
-.legend-row{display:flex;justify-content:space-between;width:220px;color:var(--dim)}
-.hud-time{position:absolute;right:28px;bottom:26px;font-family:var(--font-m);font-size:11px;color:var(--muted);text-align:right;letter-spacing:.08em}
-.hud-time b{color:var(--c-yellow);font-weight:500}
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ink);z-index:95}
+#ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1.5px solid rgba(15,18,21,.35);border-radius:50%;pointer-events:none;z-index:96;transform:translate(-50%,-50%);transition:width .25s ease,height .25s ease,border-color .25s ease,opacity .3s;opacity:0}
+#ring.on{opacity:1}
+#ring.big{width:58px;height:58px;border-color:var(--accent)}
+@media(pointer:coarse){#ring{display:none}}
 
-/* ---------- SHARED SECTION SHELL ---------- */
-section{max-width:1200px;margin:0 auto;padding:110px 28px 30px}
-.eyebrow{font-family:var(--font-m);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-cyan);display:flex;align-items:center;gap:12px}
-.eyebrow::after{content:"";flex:1;max-width:120px;height:1px;background:var(--line2)}
-h2{font-family:var(--font-d);font-weight:600;font-size:clamp(26px,3.4vw,42px);text-transform:uppercase;letter-spacing:.01em;margin:14px 0 8px}
-.section-note{color:var(--muted);max-width:680px;font-size:15px;margin-bottom:44px}
-.jetline{height:3px;background:var(--jet);opacity:.85;max-width:96px;margin:22px 0 0;border-radius:2px}
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:rgba(246,247,248,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.n-logo{font-family:var(--fm);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.n-logo b{font-weight:500}
+.n-links{display:flex;gap:30px}
+.n-links a{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);position:relative}
+.n-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--ink);transition:width .3s}
+.n-links a:hover{color:var(--ink)}
+.n-links a:hover::after{width:100%}
+.n-mail{font-family:var(--fm);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:9px 16px;border-radius:99px;transition:background .25s,color .25s,border-color .25s}
+.n-mail:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+#sim{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;padding:0 32px 46px;max-width:1500px;width:100%;margin:0 auto}
+.h-eyebrow{font-family:var(--fm);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.h-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-family:var(--fd);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;line-height:.88;font-size:clamp(58px,12.5vw,182px);color:var(--ink)}
+h1 .row{display:block;overflow:hidden}
+h1 .row span{display:inline-block}
+h1 em{font-family:var(--fs);font-weight:400;text-transform:none;letter-spacing:-.01em;font-size:1.04em;line-height:.8;margin-left:.03em}
+.h-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:34px;flex-wrap:wrap}
+.h-meta .left{max-width:520px;color:var(--muted);font-size:15.5px}
+.h-meta .left b{color:var(--ink);font-weight:600}
+.h-meta .right{font-family:var(--fm);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:2}
+.h-meta .right b{color:var(--ink);font-weight:500}
+.h-fig{position:absolute;z-index:2;top:96px;right:32px;font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;line-height:1.9}
+.h-fig b{color:var(--muted);font-weight:500}
+.h-legend{position:absolute;z-index:2;top:96px;left:32px;font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.h-legend .bar{width:180px;height:6px;background:var(--jet);border-radius:99px;margin:7px 0 5px;border:1px solid rgba(15,18,21,.12)}
+.h-legend .row{display:flex;justify-content:space-between;width:180px}
+.h-scroll{position:absolute;z-index:2;bottom:46px;right:32px;font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
+.h-scroll::after{content:"";width:1px;height:54px;background:var(--line2);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* hero entrance */
+.h-up{opacity:0;transform:translateY(105%);animation:hup 1s cubic-bezier(.2,.75,.2,1) forwards}
+h1 .row:nth-child(1) .h-up{animation-delay:.15s}
+h1 .row:nth-child(2) .h-up{animation-delay:.28s}
+.h-fade{opacity:0;animation:hfade 1s ease forwards}
+.h-eyebrow.h-fade{animation-delay:.05s}
+.h-meta.h-fade{animation-delay:.62s}
+.h-fig.h-fade,.h-legend.h-fade,.h-scroll.h-fade{animation-delay:.95s}
+@keyframes hup{to{opacity:1;transform:none}}
+@keyframes hfade{to{opacity:1}}
+
+/* ---------- marquee ---------- */
+.mq{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;background:var(--card)}
+.mq-track{display:inline-block;animation:mqa var(--dur,42s) linear infinite;font-family:var(--fm);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mq-track span{margin:0 26px}
+.mq-track .st{color:var(--accent)}
+@keyframes mqa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- section shell ---------- */
+section{max-width:1500px;margin:0 auto;padding:130px 32px 20px}
+.eyebrow{font-family:var(--fm);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+h2{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;line-height:1.02;font-size:clamp(36px,5.4vw,72px);color:var(--ink)}
+h2 em{font-size:1.05em}
+.lede{color:var(--muted);max-width:640px;font-size:16px;margin-top:22px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .rv.in{opacity:1;transform:none}
 
-/* ---------- ABOUT ---------- */
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
-.about-grid p{color:var(--muted);margin-bottom:16px;font-size:15.5px}
-.about-grid p b{color:var(--text);font-weight:600}
-.spec-card{border:1px solid var(--line);background:var(--panel);padding:26px}
-.spec-card h3{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
-.spec{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
-.spec:last-child{border-bottom:none}
-.spec .k{font-family:var(--font-m);font-size:11.5px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-.spec .v{color:var(--text);text-align:right}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:64px}
-.stat{background:var(--bg2);padding:26px 22px}
-.stat .n{font-family:var(--font-d);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--text)}
-.stat .n span{color:var(--c-cyan)}
-.stat .l{font-family:var(--font-m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+/* ---------- about ---------- */
+.pull{font-family:var(--fs);font-style:italic;font-size:clamp(26px,3.4vw,44px);line-height:1.25;max-width:900px;color:var(--ink2);margin-top:54px}
+.about-cols{display:grid;grid-template-columns:1.35fr 1fr;gap:64px;margin-top:64px;align-items:start}
+.about-cols p{color:var(--muted);font-size:15.5px;margin-bottom:16px}
+.about-cols p b{color:var(--ink);font-weight:600}
+.spec{border:1px solid var(--line);background:var(--card);box-shadow:var(--sh-s)}
+.spec h3{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding:18px 24px;border-bottom:1px solid var(--line)}
+.spec .r{display:flex;justify-content:space-between;gap:18px;padding:13px 24px;border-bottom:1px solid var(--line);font-size:13.5px}
+.spec .r:last-child{border-bottom:none}
+.spec .k{font-family:var(--fm);font-size:11px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.spec .v{color:var(--ink);text-align:right;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:80px;border:1px solid var(--line);background:var(--card);box-shadow:var(--sh-s)}
+.stat{padding:34px 28px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat .n{font-family:var(--fd);font-weight:800;font-size:clamp(34px,4vw,58px);letter-spacing:-.02em;line-height:1}
+.stat .n i{font-size:.85em;color:var(--accent)}
+.stat .l{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:10px}
 
-/* ---------- RESEARCH ---------- */
-.pub{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
-.pub:first-of-type{border-top:1px solid var(--line)}
-.pub .status{font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:1px solid;display:inline-block;white-space:nowrap}
-.st-pub{color:var(--c-green);border-color:rgba(43,217,126,.4)}
-.st-acc{color:var(--c-yellow);border-color:rgba(245,217,10,.4)}
-.st-rev{color:var(--c-cyan);border-color:rgba(15,180,232,.4)}
-.st-sub{color:var(--muted);border-color:var(--line2)}
-.pub h3{font-family:var(--font-b);font-weight:600;font-size:16.5px;line-height:1.45;margin-bottom:6px}
-.pub .venue{font-family:var(--font-m);font-size:12px;color:var(--muted);letter-spacing:.04em}
-.pub .doi{font-family:var(--font-m);font-size:11.5px;letter-spacing:.08em;white-space:nowrap;align-self:center}
-.conf-list{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.conf{background:var(--bg2);padding:22px 24px;display:flex;flex-direction:column;gap:10px}
-.conf .tag{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
-.conf p{font-size:14px;font-weight:500;line-height:1.5;flex:1}
-.conf a{font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+/* ---------- publications ---------- */
+.pubs{margin-top:70px}
+.prow{display:grid;grid-template-columns:88px 1fr auto;gap:34px;align-items:center;padding:34px 10px;border-top:1px solid var(--line);position:relative;transition:background .3s,padding .3s}
+.prow:last-child{border-bottom:1px solid var(--line)}
+.prow::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;background:var(--jet);opacity:0;transition:opacity .3s}
+.prow:hover{background:var(--card);padding-left:26px}
+.prow:hover::before{opacity:1}
+.pno{font-family:var(--fs);font-style:italic;font-size:34px;color:var(--dim)}
+.prow:hover .pno{color:var(--ink)}
+.pmeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.pill{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:99px;border:1px solid}
+.pi-pub{color:var(--green);border-color:rgba(24,138,84,.4)}
+.pi-acc{color:var(--amber);border-color:rgba(185,131,18,.45)}
+.pi-rev{color:var(--accent);border-color:rgba(30,70,217,.35)}
+.venue{font-family:var(--fs);font-style:italic;font-size:16px;color:var(--muted)}
+.fa{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.prow h3{font-family:var(--fd);font-weight:600;letter-spacing:-.01em;font-size:clamp(17px,1.7vw,22px);line-height:1.4;max-width:860px}
+.pauth{font-family:var(--fm);font-size:12px;color:var(--dim);margin-top:9px;letter-spacing:.02em}
+.pauth mark{background:none;color:var(--accent);font-weight:500}
+.doi{width:58px;height:58px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:15px;transition:background .25s,color .25s,transform .25s,border-color .25s;flex:none}
+a.doi:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(45deg)}
+.doi.dim{border-style:dashed;color:var(--dim);font-size:9px;letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.3}
+.sub-h{margin-top:110px}
+.sub-h h2{font-size:clamp(26px,3.2vw,44px)}
 
-/* ---------- PROJECTS ---------- */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.proj{border:1px solid var(--line);background:var(--panel);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
-.proj:hover{border-color:var(--c-cyan);transform:translateY(-4px)}
-.proj .thumb{aspect-ratio:16/10;overflow:hidden;background:#050810;border-bottom:1px solid var(--line)}
-.proj .thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05);transition:transform .5s ease}
-.proj:hover .thumb img{transform:scale(1.05)}
-.proj .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-.proj .tag{font-family:var(--font-m);font-size:10px;letter-spacing:.16em;color:var(--c-cyan);text-transform:uppercase}
-.proj h3{font-size:15.5px;font-weight:600;line-height:1.45;flex:1}
-.proj a.view{font-family:var(--font-m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.proj a.view:hover{color:var(--c-cyan);text-decoration:none}
-.more-sims{margin-top:56px;border:1px solid var(--line)}
-.more-sims summary{cursor:pointer;list-style:none;padding:20px 24px;font-family:var(--font-m);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);display:flex;justify-content:space-between;align-items:center;background:var(--panel)}
-.more-sims summary::-webkit-details-marker{display:none}
-.more-sims summary span.hint{color:var(--dim);font-size:10.5px}
-.more-sims[open] summary{border-bottom:1px solid var(--line)}
-.sim-list{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.sim-list a{display:flex;gap:14px;align-items:baseline;padding:14px 24px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13.5px;transition:color .2s,background .2s}
-.sim-list a:nth-child(odd){border-right:1px solid var(--line)}
-.sim-list a:hover{color:var(--text);background:rgba(15,180,232,.05);text-decoration:none}
-.sim-list a .idx{font-family:var(--font-m);font-size:10.5px;color:var(--dim);min-width:26px}
+/* ---------- projects ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:64px}
+.proj{background:var(--card);border:1px solid var(--line);box-shadow:var(--sh-s);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s}
+.proj:hover{box-shadow:var(--sh-l)}
+.proj .thumb{aspect-ratio:16/10;overflow:hidden;background:#0F1620;position:relative}
+.proj .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .thumb img{transform:scale(1.06)}
+.proj .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.proj .tag{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.proj h3{font-family:var(--fd);font-weight:600;font-size:16px;letter-spacing:-.01em;line-height:1.45;flex:1}
+.proj .go{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.proj .go::after{content:"→";transition:transform .25s}
+.proj:hover .go{color:var(--accent)}
+.proj:hover .go::after{transform:translateX(5px)}
+.log{margin-top:70px;border:1px solid var(--line);background:var(--card);box-shadow:var(--sh-s)}
+.log summary{cursor:pointer;list-style:none;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;font-family:var(--fd);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.log summary::-webkit-details-marker{display:none}
+.log summary .hint{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.log[open] summary{border-bottom:1px solid var(--line)}
+.log-list{display:grid;grid-template-columns:1fr 1fr}
+.log-list a{display:flex;gap:16px;align-items:baseline;padding:15px 28px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13.5px;transition:background .2s,color .2s,padding .2s}
+.log-list a:nth-child(odd){border-right:1px solid var(--line)}
+.log-list a:hover{color:var(--ink);background:var(--bg);padding-left:36px}
+.log-list .ix{font-family:var(--fm);font-size:10px;color:var(--dim);min-width:24px}
 
-/* ---------- EXPERIENCE ---------- */
-.tl{border-left:1px solid var(--line2);margin-left:8px;padding-left:36px;display:flex;flex-direction:column;gap:40px;position:relative}
-.tl-item{position:relative}
-.tl-item::before{content:"";position:absolute;left:-41px;top:7px;width:9px;height:9px;background:var(--bg);border:2px solid var(--c-cyan);transform:rotate(45deg)}
-.tl-item .when{font-family:var(--font-m);font-size:11px;letter-spacing:.14em;color:var(--c-yellow);text-transform:uppercase}
-.tl-item h3{font-family:var(--font-d);font-size:18px;font-weight:600;margin:6px 0 2px}
-.tl-item .org{font-size:13.5px;color:var(--muted);font-family:var(--font-m)}
-.tl-item p{color:var(--muted);font-size:14.5px;margin-top:10px;max-width:720px}
-.tl-item .result{display:inline-block;margin-top:10px;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-green);border:1px solid rgba(43,217,126,.35);padding:5px 10px}
+/* ---------- experience (giant rows) ---------- */
+.xp{margin-top:70px}
+.xrow{display:grid;grid-template-columns:1fr auto;gap:10px 40px;align-items:baseline;padding:34px 10px;border-top:1px solid var(--line);position:relative;transition:padding .35s,background .35s}
+.xrow:last-child{border-bottom:1px solid var(--line)}
+.xrow:hover{background:var(--card);padding-left:28px}
+.xrow h3{font-family:var(--fd);font-weight:700;letter-spacing:-.02em;line-height:1.08;font-size:clamp(22px,3.4vw,44px);color:var(--ink)}
+.xrow .org{font-family:var(--fs);font-style:italic;font-size:17px;color:var(--muted);margin-top:8px}
+.xrow .yr{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;text-align:right;white-space:nowrap}
+.xrow .res{display:inline-block;font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid rgba(24,138,84,.35);border-radius:99px;padding:5px 11px;margin-top:12px}
+.xrow p{grid-column:1/-1;color:var(--muted);font-size:14.5px;max-width:760px;margin-top:2px}
 
-/* ---------- SKILLS / CERTS ---------- */
-.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.sk{border:1px solid var(--line);background:var(--panel);padding:26px}
-.sk h3{font-family:var(--font-m);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-cyan);margin-bottom:16px}
+/* ---------- recognition rows ---------- */
+.rec{margin-top:64px}
+.rrow{display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center;padding:22px 10px;border-top:1px solid var(--line);transition:background .3s,padding .3s}
+.rrow:last-child{border-bottom:1px solid var(--line)}
+.rrow:hover{background:var(--card);padding-left:26px}
+.rrow .t{font-family:var(--fd);font-weight:600;font-size:clamp(16px,1.8vw,21px);letter-spacing:-.01em}
+.rrow .o{font-family:var(--fs);font-style:italic;color:var(--muted);font-size:15.5px}
+.rrow .y{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--dim)}
+
+/* ---------- skills ---------- */
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:64px}
+.sk{border:1px solid var(--line);background:var(--card);box-shadow:var(--sh-s);padding:28px;transition:box-shadow .3s}
+.sk:hover{box-shadow:var(--sh-l)}
+.sk h3{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--font-m);font-size:11.5px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line2);padding:6px 12px;transition:color .2s,border-color .2s}
-.chip:hover{color:var(--text);border-color:var(--c-cyan)}
-.cert-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
-.cert-row:last-child{border:none}
-.cert-row .c{color:var(--text)}
-.cert-row .y{font-family:var(--font-m);color:var(--dim);font-size:11.5px;white-space:nowrap}
+.chip{font-family:var(--fm);font-size:11.5px;color:var(--muted);border:1px solid var(--line2);border-radius:99px;padding:7px 14px;transition:all .2s}
+.chip:hover{color:var(--ink);border-color:var(--ink);background:var(--bg)}
+.crow{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.crow:last-child{border:none}
+.crow .y{font-family:var(--fm);color:var(--dim);font-size:11px;white-space:nowrap}
 
-/* ---------- REFERENCES / CONTACT ---------- */
-.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.ref{border:1px solid var(--line);background:var(--panel);padding:24px}
-.ref h3{font-family:var(--font-d);font-size:16px;font-weight:600}
-.ref .role{color:var(--muted);font-size:13px;margin:6px 0 12px;line-height:1.5}
-.ref a{font-family:var(--font-m);font-size:11.5px;word-break:break-all}
-.contact{border:1px solid var(--line);background:var(--panel);padding:56px 40px;text-align:center;margin-top:10px;position:relative;overflow:hidden}
-.contact::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--jet)}
-.contact h2{margin-top:0}
-.contact p{color:var(--muted);max-width:560px;margin:0 auto 30px}
-.contact .row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-footer{max-width:1200px;margin:80px auto 0;padding:26px 28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--font-m);font-size:11px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+/* ---------- references ---------- */
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:64px}
+.ref{border:1px solid var(--line);background:var(--card);box-shadow:var(--sh-s);padding:26px;transition:box-shadow .3s}
+.ref:hover{box-shadow:var(--sh-l)}
+.ref h3{font-family:var(--fd);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.ref .role{font-family:var(--fs);font-style:italic;color:var(--muted);font-size:15px;margin:8px 0 14px;line-height:1.5}
+.ref a{font-family:var(--fm);font-size:11.5px;color:var(--accent);word-break:break-all}
+.ref a:hover{text-decoration:underline}
 
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:960px){
-  .about-grid{grid-template-columns:1fr}
+/* ---------- contact / footer ---------- */
+.contact{text-align:center;padding-bottom:60px}
+.contact .lede{margin:22px auto 0}
+.big-mail{display:inline-block;font-family:var(--fd);font-weight:700;letter-spacing:-.02em;font-size:clamp(24px,4.6vw,62px);margin-top:44px;position:relative}
+.big-mail::after{content:"";position:absolute;left:0;bottom:-6px;height:3px;width:100%;background:var(--jet);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.big-mail:hover::after{transform:scaleX(1)}
+.c-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:44px}
+.pillbtn{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line2);border-radius:99px;padding:13px 24px;transition:background .25s,color .25s,border-color .25s}
+.pillbtn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.f-mq{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);padding:34px 0;margin-top:100px}
+.f-mq .mq-track{font-family:var(--fd);font-weight:800;font-size:clamp(46px,8.5vw,116px);letter-spacing:-.02em;text-transform:uppercase;color:var(--ink);animation-duration:34s}
+.f-mq .mq-track span{margin:0 30px}
+.f-mq .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.f-mq .st{color:var(--accent);-webkit-text-stroke:0;font-family:var(--fs);font-style:italic;font-weight:400;text-transform:none}
+footer{max-width:1500px;margin:0 auto;padding:34px 32px 44px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+footer a:hover{color:var(--ink)}
+
+/* stagger entrances */
+.rv.in .proj,.rv.in .prow,.rv.in .xrow,.rv.in .rrow,.rv.in .stat,.rv.in .sk,.rv.in .ref{animation:rise .7s cubic-bezier(.2,.7,.3,1) both}
+.rv.in .proj:nth-child(1),.rv.in .prow:nth-child(1),.rv.in .xrow:nth-child(1),.rv.in .rrow:nth-child(1),.rv.in .stat:nth-child(1),.rv.in .sk:nth-child(1),.rv.in .ref:nth-child(1){animation-delay:.05s}
+.rv.in .proj:nth-child(2),.rv.in .prow:nth-child(2),.rv.in .xrow:nth-child(2),.rv.in .rrow:nth-child(2),.rv.in .stat:nth-child(2),.rv.in .sk:nth-child(2),.rv.in .ref:nth-child(2){animation-delay:.12s}
+.rv.in .proj:nth-child(3),.rv.in .prow:nth-child(3),.rv.in .xrow:nth-child(3),.rv.in .rrow:nth-child(3),.rv.in .stat:nth-child(3),.rv.in .sk:nth-child(3),.rv.in .ref:nth-child(3){animation-delay:.19s}
+.rv.in .proj:nth-child(4),.rv.in .prow:nth-child(4),.rv.in .xrow:nth-child(4),.rv.in .rrow:nth-child(4),.rv.in .stat:nth-child(4),.rv.in .sk:nth-child(4){animation-delay:.26s}
+.rv.in .proj:nth-child(5),.rv.in .prow:nth-child(5),.rv.in .xrow:nth-child(5),.rv.in .rrow:nth-child(5){animation-delay:.33s}
+.rv.in .proj:nth-child(6),.rv.in .xrow:nth-child(6),.rv.in .rrow:nth-child(6){animation-delay:.4s}
+.rv.in .proj:nth-child(7){animation-delay:.47s}
+.rv.in .proj:nth-child(8){animation-delay:.54s}
+.rv.in .proj:nth-child(9){animation-delay:.61s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .about-cols{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr 1fr}
-  .conf-list{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
-  .pub{grid-template-columns:1fr;gap:10px}
-  .pub .doi{align-self:start}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .prow{grid-template-columns:56px 1fr;gap:20px}
+  .doi{grid-column:2;width:auto;height:auto;border-radius:99px;padding:10px 18px;font-size:11px;justify-self:start;transform:none!important}
   .ref-grid{grid-template-columns:1fr}
   .sk-grid{grid-template-columns:1fr}
-  .sim-list{grid-template-columns:1fr}
-  .sim-list a:nth-child(odd){border-right:none}
+  .log-list{grid-template-columns:1fr}
+  .log-list a:nth-child(odd){border-right:none}
+  .rrow{grid-template-columns:1fr;gap:6px}
+  .rrow .y{text-align:left}
 }
-@media(max-width:640px){
-  .nav-links{display:none}
+@media(max-width:680px){
+  .n-links,.n-mail{display:none}
+  section{padding:90px 20px 16px}
+  .hero-inner{padding:0 20px 40px}
+  .h-fig{display:none}
+  .h-legend{left:20px}
+  .h-scroll{display:none}
   .proj-grid{grid-template-columns:1fr}
-  .hud-tr{display:none}
-  section{padding:80px 20px 20px}
-  .hero-copy{padding:0 20px;bottom:96px}
+  .xrow{grid-template-columns:1fr}
+  .xrow .yr{text-align:left}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  body::before{animation:none}
+  .h-up,.h-fade{opacity:1;transform:none;animation:none}
+  .mq-track{animation:none}
   .rv{opacity:1;transform:none;transition:none}
-  .proj,.proj .thumb img{transition:none}
-}
-
-/* ---------- scroll progress ---------- */
-#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--jet);z-index:60;transition:width .08s linear}
-
-/* ---------- publication ticker ---------- */
-.pub-ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:36px 0 46px;padding:13px 0;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.ticker-track{display:inline-block;font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);animation:tick 46s linear infinite;will-change:transform}
-.ticker-track span{margin:0 22px}
-.ticker-track .dot{color:var(--c-cyan);margin:0 4px}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ---------- journal publication cards ---------- */
-.jpub{display:grid;grid-template-columns:92px 1fr auto;gap:30px;align-items:center;padding:30px 30px 30px 26px;border:1px solid var(--line);background:var(--panel);margin-bottom:14px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s,background .3s}
-.jpub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--jet);opacity:0;transition:opacity .3s}
-.jpub:hover{border-color:var(--line2);background:#0F1828;transform:translateX(6px)}
-.jpub:hover::before{opacity:1}
-.jnum{font-family:var(--font-d);font-weight:700;font-size:28px;color:var(--dim);letter-spacing:.02em;transition:color .3s}
-.jpub:hover .jnum{color:var(--c-cyan)}
-.jmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.jvenue{font-family:var(--font-m);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.fa-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-yellow);font-style:normal}
-.jpub h3{font-family:var(--font-d);font-weight:600;font-size:18.5px;line-height:1.45;margin-bottom:10px}
-.jauth{font-family:var(--font-m);font-size:12.5px;color:var(--dim);letter-spacing:.03em}
-.jauth mark,.cauth mark{background:transparent;color:var(--c-cyan);font-weight:600}
-.jdoi{font-family:var(--font-m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:11px 18px;border:1px solid var(--line2);color:var(--text);white-space:nowrap;transition:border-color .2s,background .2s}
-a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-decoration:none}
-.jdoi-dim{color:var(--dim);border-style:dashed}
-.cauth{font-family:var(--font-m);font-size:11.5px;color:var(--dim);letter-spacing:.03em;line-height:1.6}
-@media(max-width:960px){
-  .jpub{grid-template-columns:1fr;gap:14px;align-items:start}
-  .jnum{font-size:20px}
-  .jdoi{justify-self:start}
-}
-@media(prefers-reduced-motion:reduce){
-  .ticker-track{animation:none}
-  .jpub,#progress{transition:none}
-}
-
-@media(max-width:768px){
-  nav{backdrop-filter:none;background:rgba(7,11,18,.94)}
+  .rv.in .proj,.rv.in .prow,.rv.in .xrow,.rv.in .rrow,.rv.in .stat,.rv.in .sk,.rv.in .ref{animation:none}
+  .h-eyebrow .dot,.h-scroll::after{animation:none}
+  #ring{display:none}
+  .proj .thumb img,.prow,.xrow,.rrow{transition:none}
 }
 </style>
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
+<div id="ring" aria-hidden="true"></div>
 
 <nav>
-  <div class="nav-logo"><b>JAS</b> // IMPACT · STRUCTURES · SIMULATION</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
+  <a class="n-logo" href="#top"><b>J.A. Sajid</b> — Index of Impact</a>
+  <div class="n-links">
+    <a href="#about">Profile</a>
     <a href="#research">Research</a>
-    <a href="#projects">Simulations</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
+    <a href="#lab">The Lab</a>
+    <a href="#trajectory">Trajectory</a>
     <a href="#contact">Contact</a>
   </div>
+  <a class="n-mail" href="mailto:sajid.jubayer2@gmail.com">Get in touch</a>
 </nav>
 
-<header class="hero">
-  <canvas id="sim" aria-label="Live 3D simulation of a soft-body impact on a stiffened panel"></canvas>
-  <div class="hud-corner hc1"></div><div class="hud-corner hc2"></div>
-  <div class="hud-corner hc3"></div><div class="hud-corner hc4"></div>
-  <div class="hud hud-tl">Viewport 01 — Soft body impact / composite stiffened panel<br><small>Mesh: shell · SPH projectile · loop enabled</small></div>
-  <div class="hud hud-tr"><span class="live">● Solver: Explicit Dynamics</span><br><small>Model: thesis demonstrator</small></div>
-  <div class="hero-copy">
+<header class="hero" id="top">
+  <canvas id="sim" aria-label="Live simulation: soft-body impacts on a composite stiffened panel"></canvas>
+  <div class="h-legend h-fade">Total deformation [mm]
+    <div class="bar"></div>
+    <div class="row"><span>0.00</span><span>1.10</span><span>2.20</span></div>
+  </div>
+  <div class="h-fig h-fade">
+    <b>Fig. 01</b> — Soft-body impact,<br>composite stiffened panel<br>
+    Solver — Explicit Dynamics<br>
+    t = <b id="simTime">0.0000</b> s · <span id="simState">In flight</span>
+  </div>
+  <div class="h-scroll h-fade">Scroll</div>
+  <div class="hero-inner">
+    <div class="h-eyebrow h-fade"><span class="dot"></span>Aerospace Engineer — Impact Dynamics & Computational Mechanics</div>
     <h1>
-      <span class="thin">Jubayer Ahmed Sajid — Aerospace Engineering</span>
-      I break things<br><span class="grad">in simulation</span>
+      <span class="row"><span class="h-up">Jubayer</span></span>
+      <span class="row"><span class="h-up">Ahmed <em>Sajid</em></span></span>
     </h1>
-    <p class="hero-sub">Impact dynamics, composite structures and FEA/CFD — with machine-learning surrogates to predict what the solver takes hours to compute. Published researcher, national CAD champion, prospective PhD applicant.</p>
-    <div class="hero-cta">
-      <a class="btn btn-solid" href="#research">View research</a>
-      <a class="btn" href="#projects">32+ simulations</a>
+    <div class="h-meta h-fade">
+      <div class="left">I study the milliseconds where structures fail — bird strike, ballistics, soft-body impact — and build <b>machine-learning surrogates</b> that predict them in seconds. Published researcher. Prospective PhD applicant.</div>
+      <div class="right">
+        Savar, Dhaka — <b id="clock">--:--</b> GMT+6<br>
+        Status — <b>Open to PhD & research roles</b>
+      </div>
     </div>
   </div>
-  <div class="legend">TOTAL DEFORMATION [MM]
-    <div class="legend-bar"></div>
-    <div class="legend-row"><span>0.00</span><span>0.55</span><span>1.10</span><span>1.65</span><span>2.20</span></div>
-  </div>
-  <div class="hud-time">t = <b id="simTime">0.0000</b> s<br><span id="simState">PROJECTILE IN FLIGHT</span></div>
-  <div class="hero-fade"></div>
 </header>
 
+<div class="mq" aria-hidden="true"><div class="mq-track">
+  <span>5 Journal Papers</span><span class="st">✦</span><span>6 Conference Papers</span><span class="st">✦</span><span>32+ Published Simulations</span><span class="st">✦</span><span>National CAD Champion</span><span class="st">✦</span><span>AIAA DBF — 1st in Bangladesh</span><span class="st">✦</span><span>CSWP Certified</span><span class="st">✦</span><span>Vice-Chancellor Scholarship</span><span class="st">✦</span>
+</div></div>
+
 <main>
-<!-- ================= ABOUT ================= -->
+<!-- ============ 01 PROFILE ============ -->
 <section id="about">
   <div class="rv">
-    <div class="eyebrow">01 / Profile</div>
-    <h2>Engineer of the moment things fail</h2>
-    <div class="jetline"></div>
+    <div class="eyebrow">— 01 / Profile</div>
+    <h2>Engineer of the<br>moment things <em>fail.</em></h2>
   </div>
-  <div class="about-grid" style="margin-top:44px">
+  <p class="pull rv">"Every structure has a worst millisecond. My work is to find it in simulation — before it happens in the sky."</p>
+  <div class="about-cols">
     <div class="rv">
-      <p><b>Jubayer Ahmed Sajid</b> is a senior Aerospace Engineering student at Aviation and Aerospace University, Bangladesh (AAUB), specializing in <b>impact dynamics, composite and lattice structures, and ANSYS-based advanced simulation</b>. His work lives in the microseconds where a bird meets a fan blade, a soft body meets a stiffened panel, or a projectile meets Kevlar — and in the models that predict what happens next.</p>
-      <p>His undergraduate thesis develops <b>machine-learning-based prediction of soft-body impacts on composite stiffened panels</b>, pairing explicit dynamics with data-driven surrogates so that hours of solver time collapse into seconds of inference. He has published in MDPI <i>Designs</i> and <i>Modelling</i>, with further journal work accepted and under review at Technical Gazette and Wiley journals.</p>
-      <p>Beyond research, he has competed at the front of international design competitions — AIAA Design/Build/Fly and two Vertical Flight Society design competitions — and led the winning team at a national CAD championship. He is guided by <b>Dr. Saiaf Bin Rayhan</b> and <b>Dr. Ivan Grgić</b>, and is currently preparing PhD applications in computational mechanics and aerospace structures.</p>
+      <p><b>Jubayer Ahmed Sajid</b> is a senior Aerospace Engineering student at Aviation and Aerospace University, Bangladesh, specializing in <b>impact dynamics, composite and lattice structures, and ANSYS-based advanced simulation</b>. His work lives where a bird meets a fan blade, a projectile meets Kevlar, a soft body meets a stiffened panel — and in the models that predict what happens next.</p>
+      <p>His undergraduate thesis develops <b>machine-learning-based prediction of soft-body impacts on composite stiffened panels</b>, pairing explicit dynamics with data-driven surrogates so hours of solver time collapse into seconds of inference. He has published in MDPI <i>Designs</i> and <i>Modelling</i>, with further work accepted at Technical Gazette and under review at Wiley journals.</p>
+      <p>Beyond research, he has competed at the front of international design competitions — AIAA Design/Build/Fly and two Vertical Flight Society competitions — and led the winning team at a national CAD championship. Guided by <b>Dr. Saiaf Bin Rayhan</b> and <b>Dr. Ivan Grgić</b>, he is preparing PhD applications in computational mechanics and aerospace structures.</p>
     </div>
-    <div class="spec-card rv">
-      <h3>// System specification</h3>
-      <div class="spec"><span class="k">Degree</span><span class="v">BSc Aerospace Eng., AAUB · 2021–2026</span></div>
-      <div class="spec"><span class="k">CGPA</span><span class="v">3.51 / 4.00 (thru 7th sem.)</span></div>
-      <div class="spec"><span class="k">Thesis</span><span class="v">ML prediction of soft-body impact on composite stiffened panels</span></div>
-      <div class="spec"><span class="k">Focus</span><span class="v">Impact dynamics · FEA · Composites · CFD · ML surrogates</span></div>
-      <div class="spec"><span class="k">Scholarship</span><span class="v">Vice-Chancellor Scholarship</span></div>
-      <div class="spec"><span class="k">Status</span><span class="v">Prospective PhD applicant</span></div>
-      <div class="spec"><span class="k">Location</span><span class="v">Savar, Dhaka, Bangladesh</span></div>
+    <div class="spec rv">
+      <h3>— System specification</h3>
+      <div class="r"><span class="k">Degree</span><span class="v">BSc Aerospace Eng., AAUB · 2021–26</span></div>
+      <div class="r"><span class="k">CGPA</span><span class="v">3.51 / 4.00 (thru 7th sem.)</span></div>
+      <div class="r"><span class="k">Thesis</span><span class="v">ML prediction of soft-body impact</span></div>
+      <div class="r"><span class="k">Focus</span><span class="v">Impact · FEA · Composites · CFD · ML</span></div>
+      <div class="r"><span class="k">Scholarship</span><span class="v">Vice-Chancellor Scholarship</span></div>
+      <div class="r"><span class="k">Status</span><span class="v">Prospective PhD applicant</span></div>
+      <div class="r"><span class="k">Based in</span><span class="v">Savar, Dhaka, Bangladesh</span></div>
     </div>
   </div>
   <div class="stats rv">
     <div class="stat"><div class="n"><span class="cnt" data-target="5" data-pad="2">00</span></div><div class="l">Journal papers</div></div>
     <div class="stat"><div class="n"><span class="cnt" data-target="6" data-pad="2">00</span></div><div class="l">Conference papers</div></div>
-    <div class="stat"><div class="n"><span class="cnt" data-target="32">0</span><span>+</span></div><div class="l">Public simulations</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-target="32">0</span><i>+</i></div><div class="l">Public simulations</div></div>
     <div class="stat"><div class="n">#1</div><div class="l">National CAD champion</div></div>
   </div>
 </section>
 
-<!-- ================= RESEARCH ================= -->
+<!-- ============ 02 RESEARCH ============ -->
 <section id="research">
   <div class="rv">
-    <div class="eyebrow">02 / Research output</div>
-    <h2>Publications</h2>
-    <p class="section-note">Five journal papers and six conference contributions spanning hydrogen-electric VTOL design, physics-guided machine learning for bird strike, multidisciplinary FEA, combustion CFD and lattice homogenization.</p>
+    <div class="eyebrow">— 02 / Research output</div>
+    <h2>Published <em>work.</em></h2>
+    <p class="lede">Five journal papers spanning hydrogen-electric VTOL design, physics-guided machine learning for bird strike, multidisciplinary FEA, combustion CFD and lattice homogenization.</p>
   </div>
-
-  <div class="pub-ticker rv" aria-hidden="true"><div class="ticker-track" id="ticker">
-    <span>Hydrogen-Electric VTOL Retrofit — Designs (MDPI)</span><span class="dot">◆</span>
-    <span>Physics-Guided ML Surrogates for Bird Strike — Modelling (MDPI)</span><span class="dot">◆</span>
-    <span>Multidisciplinary FEA of an Electric Three-Wheeler — Technical Gazette</span><span class="dot">◆</span>
-    <span>Bioethanol Vapor Substitution CFD — J. Engineering (Wiley)</span><span class="dot">◆</span>
-    <span>Automated Homogenization in Lattice Structures — Engineering Reports (Wiley)</span><span class="dot">◆</span>
-    <span>IOCAE 2026 — 5 Conference Papers — MDPI Sciforum</span><span class="dot">◆</span>
-  </div></div>
-
-  <div class="rv">
-    <article class="jpub">
-      <div class="jnum">J-01</div>
-      <div class="jmain">
-        <div class="jmeta"><span class="status st-pub">Published</span><span class="fa-tag">★ First author</span><span class="jvenue">Designs — MDPI</span></div>
+  <div class="pubs rv">
+    <article class="prow">
+      <div class="pno">01</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-pub">Published</span><span class="fa">✦ First author</span><span class="venue">Designs — MDPI</span></div>
         <h3>Conceptual Retrofit of a Hydrogen-Electric VTOL Rotorcraft: The Hawk Demonstrator Simulation</h3>
-        <p class="jauth"><mark>Sajid, J. A.</mark>, et al.</p>
+        <div class="pauth"><mark>Sajid, J. A.</mark>, et al.</div>
       </div>
-      <a class="jdoi" href="https://doi.org/10.3390/designs10010009" target="_blank" rel="noopener">DOI ↗</a>
+      <a class="doi" href="https://doi.org/10.3390/designs10010009" target="_blank" rel="noopener" aria-label="Open DOI">↗</a>
     </article>
-    <article class="jpub">
-      <div class="jnum">J-02</div>
-      <div class="jmain">
-        <div class="jmeta"><span class="status st-pub">Published</span><span class="jvenue">Modelling — MDPI</span></div>
+    <article class="prow">
+      <div class="pno">02</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-pub">Published</span><span class="venue">Modelling — MDPI</span></div>
         <h3>Physics-Guided Machine Learning Surrogates for Bird Strike Analysis on Rotating Jet Engine Blades Through a Comparative Study of Lagrangian and SPH Simulations</h3>
-        <p class="jauth">Nabil, M. K. H.; <mark>Sajid, J. A.</mark>; et al.</p>
+        <div class="pauth">Nabil, M. K. H.; <mark>Sajid, J. A.</mark>; et al.</div>
       </div>
-      <a class="jdoi" href="https://doi.org/10.3390/modelling7030080" target="_blank" rel="noopener">DOI ↗</a>
+      <a class="doi" href="https://doi.org/10.3390/modelling7030080" target="_blank" rel="noopener" aria-label="Open DOI">↗</a>
     </article>
-    <article class="jpub">
-      <div class="jnum">J-03</div>
-      <div class="jmain">
-        <div class="jmeta"><span class="status st-acc">Accepted · Feb 2027 issue</span><span class="fa-tag">★ First author</span><span class="jvenue">Technical Gazette</span></div>
+    <article class="prow">
+      <div class="pno">03</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-acc">Accepted · Feb 2027</span><span class="fa">✦ First author</span><span class="venue">Technical Gazette</span></div>
         <h3>Structural and Safety Design of a Low-Cost Electric Three-Wheeler for Dense Urban Traffic Using a Multidisciplinary FEA Approach</h3>
-        <p class="jauth"><mark>Sajid, J. A.</mark>, et al. — born from the national-champion Design Decode 1.0 concept</p>
+        <div class="pauth"><mark>Sajid, J. A.</mark>, et al. — born from the national-champion Design Decode concept</div>
       </div>
-      <a class="jdoi" href="https://doi.org/10.20944/preprints202603.1246.v1" target="_blank" rel="noopener">Preprint DOI ↗</a>
+      <a class="doi" href="https://doi.org/10.20944/preprints202603.1246.v1" target="_blank" rel="noopener" aria-label="Open preprint DOI">↗</a>
     </article>
-    <article class="jpub">
-      <div class="jnum">J-04</div>
-      <div class="jmain">
-        <div class="jmeta"><span class="status st-rev">Under review</span><span class="jvenue">Journal of Engineering — Wiley</span></div>
+    <article class="prow">
+      <div class="pno">04</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-rev">Under review</span><span class="venue">Journal of Engineering — Wiley</span></div>
         <h3>CFD Assessment of Bioethanol Vapor Substitution in a Methane-Air Gas Turbine Combustor Using Matched Thermal Performance</h3>
-        <p class="jauth">Chawdhury, N. H. A.; Fayek, A.; <mark>Sajid, J. A.</mark>; et al.</p>
+        <div class="pauth">Chawdhury, N. H. A.; Fayek, A.; <mark>Sajid, J. A.</mark>; et al.</div>
       </div>
-      <span class="jdoi jdoi-dim">In review</span>
+      <span class="doi dim">In<br>review</span>
     </article>
-    <article class="jpub">
-      <div class="jnum">J-05</div>
-      <div class="jmain">
-        <div class="jmeta"><span class="status st-rev">Under review</span><span class="jvenue">Engineering Reports — Wiley</span></div>
+    <article class="prow">
+      <div class="pno">05</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-rev">Under review</span><span class="venue">Engineering Reports — Wiley</span></div>
         <h3>Topology-Dependent Evaluation of Automated Homogenization in Lattice Structures with Geometric Scaling</h3>
-        <p class="jauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</p>
+        <div class="pauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</div>
       </div>
-      <span class="jdoi jdoi-dim">In review</span>
+      <span class="doi dim">In<br>review</span>
     </article>
   </div>
 
-  <div class="rv" style="margin-top:80px">
-    <div class="eyebrow">02.1 / Conferences</div>
-    <h2 style="font-size:clamp(20px,2.4vw,28px)">Conference abstracts & proceedings</h2>
-    <p class="section-note" style="margin-bottom:30px">Five papers in the Proceedings of the 1st International Online Conference on Aerospace (IOCAE 2026), 16–17 April 2026, MDPI Sciforum — plus one submission to PLIN 2026.</p>
+  <div class="sub-h rv">
+    <div class="eyebrow">— 02.1 / In proceedings</div>
+    <h2>Conference <em>papers.</em></h2>
+    <p class="lede">Five papers in the Proceedings of the 1st International Online Conference on Aerospace — IOCAE 2026, 16–17 April 2026, MDPI Sciforum — plus one submission to PLIN 2026.</p>
   </div>
-  <div class="conf-list rv">
-    <div class="conf"><span class="tag">C-01 · IOCAE 2026 · FEA / Structures</span><p>Conceptual Design and Finite Element Validation of Alpha-11 Wing: Mesh Convergence, Structural Performance and Material Trade-offs</p><span class="cauth"><mark>Sajid, J. A.</mark>; et al. <em class="fa-tag">★ First author</em></span><a href="https://sciforum.net/paper/view/30328" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
-    <div class="conf"><span class="tag">C-02 · IOCAE 2026 · Lattices</span><p>Topology-Dependent Evaluation of Automated Homogenization for Lattice Structures in Aerospace Design</p><span class="cauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</span><a href="https://sciforum.net/paper/view/30331" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
-    <div class="conf"><span class="tag">C-03 · IOCAE 2026 · Rotorcraft</span><p>Conceptual Design and Initial Sizing of a Tiltrotor Aircraft: A Comprehensive Analytical Approach</p><span class="cauth">Hasan, M.; Islam, S.; <mark>Sajid, J.</mark>; Prodhan, M.</span><a href="https://sciforum.net/paper/view/30332" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
-    <div class="conf"><span class="tag">C-04 · IOCAE 2026 · FSI</span><p>Structural Analysis and Optimization of a Jet Trainer Aircraft Wing Using Fluid-Structure Interaction</p><span class="cauth">Mizan, M. R.; Hossain, S.; Rayhan, S. B.; <mark>Sajid, J. A.</mark></span><a href="https://sciforum.net/paper/view/30394" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
-    <div class="conf"><span class="tag">C-05 · IOCAE 2026 · Aircraft design</span><p>Conceptual Design and Preliminary Analysis of Carrier-Borne Fighter Aircraft</p><span class="cauth">Ahmaad, M. U.; Grgić, I.; <mark>Sajid, J. A.</mark>; Karakašić, M.</span><a href="https://sciforum.net/paper/view/30329" target="_blank" rel="noopener">DOI / Paper ↗</a></div>
-    <div class="conf"><span class="tag">C-06 · PLIN 2026 · Submitted</span><p>Development of an ESP32-Based IoT Didactic Power Transmission Rig and Its Application in Laboratory Teaching</p><span class="cauth">17th International Natural Gas, Heat and Water Conference — submitted via EasyChair</span><span style="font-family:var(--font-m);font-size:11px;color:var(--dim);letter-spacing:.1em">UNDER SUBMISSION</span></div>
+  <div class="pubs rv">
+    <article class="prow">
+      <div class="pno">C1</div>
+      <div>
+        <div class="pmeta"><span class="fa">✦ First author</span><span class="venue">IOCAE 2026 — MDPI Sciforum</span></div>
+        <h3>Conceptual Design and Finite Element Validation of Alpha-11 Wing: Mesh Convergence, Structural Performance and Material Trade-offs</h3>
+        <div class="pauth"><mark>Sajid, J. A.</mark>; et al.</div>
+      </div>
+      <a class="doi" href="https://sciforum.net/paper/view/30328" target="_blank" rel="noopener" aria-label="Open paper">↗</a>
+    </article>
+    <article class="prow">
+      <div class="pno">C2</div>
+      <div>
+        <div class="pmeta"><span class="venue">IOCAE 2026 — MDPI Sciforum</span></div>
+        <h3>Topology-Dependent Evaluation of Automated Homogenization for Lattice Structures in Aerospace Design</h3>
+        <div class="pauth">Hossain, S.; <mark>Sajid, J. A.</mark>; et al.</div>
+      </div>
+      <a class="doi" href="https://sciforum.net/paper/view/30331" target="_blank" rel="noopener" aria-label="Open paper">↗</a>
+    </article>
+    <article class="prow">
+      <div class="pno">C3</div>
+      <div>
+        <div class="pmeta"><span class="venue">IOCAE 2026 — MDPI Sciforum</span></div>
+        <h3>Conceptual Design and Initial Sizing of a Tiltrotor Aircraft: A Comprehensive Analytical Approach</h3>
+        <div class="pauth">Hasan, M.; Islam, S.; <mark>Sajid, J.</mark>; Prodhan, M.</div>
+      </div>
+      <a class="doi" href="https://sciforum.net/paper/view/30332" target="_blank" rel="noopener" aria-label="Open paper">↗</a>
+    </article>
+    <article class="prow">
+      <div class="pno">C4</div>
+      <div>
+        <div class="pmeta"><span class="venue">IOCAE 2026 — MDPI Sciforum</span></div>
+        <h3>Structural Analysis and Optimization of a Jet Trainer Aircraft Wing Using Fluid-Structure Interaction</h3>
+        <div class="pauth">Mizan, M. R.; Hossain, S.; Rayhan, S. B.; <mark>Sajid, J. A.</mark></div>
+      </div>
+      <a class="doi" href="https://sciforum.net/paper/view/30394" target="_blank" rel="noopener" aria-label="Open paper">↗</a>
+    </article>
+    <article class="prow">
+      <div class="pno">C5</div>
+      <div>
+        <div class="pmeta"><span class="venue">IOCAE 2026 — MDPI Sciforum</span></div>
+        <h3>Conceptual Design and Preliminary Analysis of Carrier-Borne Fighter Aircraft</h3>
+        <div class="pauth">Ahmaad, M. U.; Grgić, I.; <mark>Sajid, J. A.</mark>; Karakašić, M.</div>
+      </div>
+      <a class="doi" href="https://sciforum.net/paper/view/30329" target="_blank" rel="noopener" aria-label="Open paper">↗</a>
+    </article>
+    <article class="prow">
+      <div class="pno">C6</div>
+      <div>
+        <div class="pmeta"><span class="pill pi-rev">Submitted</span><span class="venue">PLIN 2026 — 17th Intl. Natural Gas, Heat & Water Conf.</span></div>
+        <h3>Development of an ESP32-Based IoT Didactic Power Transmission Rig and Its Application in Laboratory Teaching</h3>
+        <div class="pauth">Submitted via EasyChair</div>
+      </div>
+      <span class="doi dim">Under<br>subm.</span>
+    </article>
   </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects">
+<!-- ============ 03 THE LAB ============ -->
+<section id="lab">
   <div class="rv">
-    <div class="eyebrow">03 / Simulation gallery</div>
-    <h2>Featured simulations</h2>
-    <p class="section-note">A selection from 32+ publicly documented simulation studies — bird strike, ballistics, explosions, composites, CFD. Each links to a full technical breakdown.</p>
+    <div class="eyebrow">— 03 / Simulation gallery</div>
+    <h2>The lab, <em>up close.</em></h2>
+    <p class="lede">A selection from 32+ publicly documented studies — bird strike, ballistics, explosions, composites, CFD. Every card opens the full technical breakdown.</p>
   </div>
   <div class="proj-grid rv">
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-02.png" alt="Full-frame jet engine bird strike simulation"></div><div class="body"><span class="tag">Explicit Dynamics · SPH</span><h3>Full-Frame Jet Engine Bird Strike on ANSYS Student Edition</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_jetengine-birdstrikesimulation-ansys-activity-7324862689388691457-GgTZ" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-20.png" alt="Soft body impact on composite stiffened panel"></div><div class="body"><span class="tag">ACP · Explicit Dynamics · Thesis</span><h3>Soft-Body Impact on Composite Stiffened Panel</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_simulation-lsdyna-fea-activity-7393671832165494784-aCHv" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-07.png" alt="Hudson river bird strike simulation"></div><div class="body"><span class="tag">Bird strike · Case study</span><h3>"Both Engines Down in Seconds" — Simulating the Hudson River Bird Strike</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_hudsonriver-birdstrike-ansys-activity-7360654943776653313-LtaG" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-06.png" alt="Lattice-infused stiffened panel impact analysis"></div><div class="body"><span class="tag">Lattices · FEA</span><h3>Lattice-Infused Stiffened Panel Impact Analysis</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7360966120108896258-XWdh" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-25.png" alt="The Hawk hydrogen VTOL concept"></div><div class="body"><span class="tag">VFS · Published in MDPI Designs</span><h3>The Hawk: Conceptual Hydrogen-Electric VTOL</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_vfscompetition-teamhawks-aerospaceengineering-activity-7369063429245939712-B4My" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-16.png" alt="Ballistic impact on Kevlar"></div><div class="body"><span class="tag">Ballistics · Composites</span><h3>Ballistic Impact on Kevlar — Material Response Under Fire</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballistics-kevlar-impactsimulation-activity-7410412736813174784-NmXP" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-32.png" alt="Explosion simulation ALE vs Lagrange"></div><div class="body"><span class="tag">LS-DYNA · ALE</span><h3>Explosion Simulation: ALE vs Lagrange</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-simulation-engineering-activity-7362893717428486145-e9hM" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-01.png" alt="Bird strike on rotating fan"></div><div class="body"><span class="tag">Rotating machinery · SPH</span><h3>Bird Strike — But This Time, the Fan Fights Back</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-birdstrike-activity-7323619785928294400-AOrc" target="_blank" rel="noopener">Open study ↗</a></div></article>
-    <article class="proj"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-29.png" alt="SPH ballistic art simulation"></div><div class="body"><span class="tag">SPH · Post-processing</span><h3>Art Is an Explosion — SPH + Dynamics + Ballistics</h3><a class="view" href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_explicitdynamics-ansys-sph-activity-7364705326761238528-2Lvz" target="_blank" rel="noopener">Open study ↗</a></div></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_jetengine-birdstrikesimulation-ansys-activity-7324862689388691457-GgTZ" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-02.png" alt="Full-frame jet engine bird strike"></div><div class="body"><span class="tag">Explicit Dynamics · SPH</span><h3>Full-Frame Jet Engine Bird Strike on ANSYS Student Edition</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_simulation-lsdyna-fea-activity-7393671832165494784-aCHv" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-20.png" alt="Soft body impact on composite stiffened panel"></div><div class="body"><span class="tag">ACP · Explicit Dynamics · Thesis</span><h3>Soft-Body Impact on Composite Stiffened Panel</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_hudsonriver-birdstrike-ansys-activity-7360654943776653313-LtaG" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-07.png" alt="Hudson river bird strike simulation"></div><div class="body"><span class="tag">Bird strike · Case study</span><h3>"Both Engines Down in Seconds" — the Hudson River Bird Strike</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7360966120108896258-XWdh" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-06.png" alt="Lattice-infused stiffened panel impact"></div><div class="body"><span class="tag">Lattices · FEA</span><h3>Lattice-Infused Stiffened Panel Impact Analysis</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_vfscompetition-teamhawks-aerospaceengineering-activity-7369063429245939712-B4My" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-25.png" alt="The Hawk hydrogen VTOL"></div><div class="body"><span class="tag">VFS · Published in MDPI Designs</span><h3>The Hawk: Conceptual Hydrogen-Electric VTOL</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballistics-kevlar-impactsimulation-activity-7410412736813174784-NmXP" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-16.png" alt="Ballistic impact on Kevlar"></div><div class="body"><span class="tag">Ballistics · Composites</span><h3>Ballistic Impact on Kevlar — Material Response Under Fire</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-simulation-engineering-activity-7362893717428486145-e9hM" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-32.png" alt="Explosion simulation ALE vs Lagrange"></div><div class="body"><span class="tag">LS-DYNA · ALE</span><h3>Explosion Simulation: ALE vs Lagrange</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-birdstrike-activity-7323619785928294400-AOrc" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-01.png" alt="Bird strike on rotating fan"></div><div class="body"><span class="tag">Rotating machinery · SPH</span><h3>Bird Strike — But This Time, the Fan Fights Back</h3><span class="go">Open study</span></div></a></article>
+    <article class="proj"><a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_explicitdynamics-ansys-sph-activity-7364705326761238528-2Lvz" target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" src="https://not-your-pancake.github.io/jubayerAhmedSajid_portfolio_website/project-29.png" alt="SPH ballistic art"></div><div class="body"><span class="tag">SPH · Post-processing</span><h3>Art Is an Explosion — SPH + Dynamics + Ballistics</h3><span class="go">Open study</span></div></a></article>
   </div>
-
-  <details class="more-sims rv">
+  <details class="log rv">
     <summary>Full simulation log — 23 more studies <span class="hint">[ expand ]</span></summary>
-    <div class="sim-list">
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysfluent-simulationengineering-activity-7335700482394353665-sZ-Z" target="_blank" rel="noopener"><span class="idx">03</span>Transient CFD on ANSYS Fluent — airflow limits</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_rotorcraftdesign-cfdsimulation-aerospaceengineering-activity-7334985062100135936-_dzt" target="_blank" rel="noopener"><span class="idx">04</span>Rotorcraft CFD — post-exam CFD study</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysdiscovery-ansysfluent-activity-7327696310243840000-04fU" target="_blank" rel="noopener"><span class="idx">05</span>G-Wagon in a virtual wind tunnel</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_caddesign-rover-robotics-activity-7355281333075554305-dxDz" target="_blank" rel="noopener"><span class="idx">08</span>The Rovniper — rover CAD & design</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_structural-material-selection-and-validation-activity-7352729721811460096-a0Ev" target="_blank" rel="noopener"><span class="idx">09</span>UAV material validation — ANSYS + SolidWorks</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_comparative-study-of-strain-distribution-activity-7352668295457583104-E_qJ" target="_blank" rel="noopener"><span class="idx">10</span>Comparative strain distribution study</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansys-biomechanics-activity-7337900301040898049-bY4h" target="_blank" rel="noopener"><span class="idx">11</span>Biomechanical CFD — cough dispersion in confined spaces</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballisticsimulation-kevlar-explicitdynamics-activity-7327368017955147777-psWE" target="_blank" rel="noopener"><span class="idx">12</span>Advanced ballistic impact — material response</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-buschassis-fea-activity-7314823420863504385-8s6c" target="_blank" rel="noopener"><span class="idx">13</span>Bus chassis structural simulation</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_fea-ansys-explicitdynamics-activity-7310973699451490305-vI72" target="_blank" rel="noopener"><span class="idx">14</span>Impact on RC beam — Explicit Dynamics</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="idx">15</span>Eigenvalue buckling of stiffened panel</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7439004546691100672-l7RA" target="_blank" rel="noopener"><span class="idx">17</span>Ballistic impact on skeletal head</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="idx">18</span>Impact analysis on lattice structures</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-ugcPost-7366453108358426625-L0oP/" target="_blank" rel="noopener"><span class="idx">19</span>Water vs head — fluid impact</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-composites-activity-7388937773107466240-rS3v" target="_blank" rel="noopener"><span class="idx">21</span>3-point bending of composite beam (ACP)</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-combustionmodeling-biogas-activity-7374465390342475776-FcQM" target="_blank" rel="noopener"><span class="idx">22</span>CFD simulation of biogas combustion</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-birdstrike-simulation-activity-7371561186217066496-9E-e" target="_blank" rel="noopener"><span class="idx">23</span>Bird strike on leading edge — reinforcement study</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-birdstrike-aerospace-activity-7369439114904981504-m0bI" target="_blank" rel="noopener"><span class="idx">24</span>SPH bird strike at 201 fps</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fluent-cfd-activity-7368290969810612225-SnQx" target="_blank" rel="noopener"><span class="idx">26</span>Two vs four wheels — dynamic Fluent study</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-activity-7367959511292112896-3Pr9" target="_blank" rel="noopener"><span class="idx">27</span>Impact on ribs — biomechanics</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-simulation-activity-7367585432093622273-vyVT" target="_blank" rel="noopener"><span class="idx">28</span>Hyperelastic material under impact</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-cfd-simulation-activity-7364348130806444035-quLG" target="_blank" rel="noopener"><span class="idx">30</span>Dynamic simulation of Hellfire R9X missile</a>
-      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-ansys-simulation-activity-7363239698539888643-Qnnr" target="_blank" rel="noopener"><span class="idx">31</span>Friction turning into heat — LS-DYNA</a>
+    <div class="log-list">
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysfluent-simulationengineering-activity-7335700482394353665-sZ-Z" target="_blank" rel="noopener"><span class="ix">03</span>Transient CFD on ANSYS Fluent — airflow limits</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_rotorcraftdesign-cfdsimulation-aerospaceengineering-activity-7334985062100135936-_dzt" target="_blank" rel="noopener"><span class="ix">04</span>Rotorcraft CFD study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansysdiscovery-ansysfluent-activity-7327696310243840000-04fU" target="_blank" rel="noopener"><span class="ix">05</span>G-Wagon in a virtual wind tunnel</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_caddesign-rover-robotics-activity-7355281333075554305-dxDz" target="_blank" rel="noopener"><span class="ix">08</span>The Rovniper — rover CAD & design</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_structural-material-selection-and-validation-activity-7352729721811460096-a0Ev" target="_blank" rel="noopener"><span class="ix">09</span>UAV material validation — ANSYS + SolidWorks</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_comparative-study-of-strain-distribution-activity-7352668295457583104-E_qJ" target="_blank" rel="noopener"><span class="ix">10</span>Comparative strain distribution study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-ansys-biomechanics-activity-7337900301040898049-bY4h" target="_blank" rel="noopener"><span class="ix">11</span>Biomechanical CFD — cough dispersion in confined spaces</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ballisticsimulation-kevlar-explicitdynamics-activity-7327368017955147777-psWE" target="_blank" rel="noopener"><span class="ix">12</span>Advanced ballistic impact — material response</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-buschassis-fea-activity-7314823420863504385-8s6c" target="_blank" rel="noopener"><span class="ix">13</span>Bus chassis structural simulation</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_fea-ansys-explicitdynamics-activity-7310973699451490305-vI72" target="_blank" rel="noopener"><span class="ix">14</span>Impact on RC beam — Explicit Dynamics</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="ix">15</span>Eigenvalue buckling of stiffened panel</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-fea-explicitdynamics-activity-7439004546691100672-l7RA" target="_blank" rel="noopener"><span class="ix">17</span>Ballistic impact on skeletal head</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-optimization-activity-7309906534694555648-xoNm" target="_blank" rel="noopener"><span class="ix">18</span>Impact analysis on lattice structures</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-ugcPost-7366453108358426625-L0oP/" target="_blank" rel="noopener"><span class="ix">19</span>Water vs head — fluid impact</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-composites-activity-7388937773107466240-rS3v" target="_blank" rel="noopener"><span class="ix">21</span>3-point bending of composite beam (ACP)</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_cfd-combustionmodeling-biogas-activity-7374465390342475776-FcQM" target="_blank" rel="noopener"><span class="ix">22</span>CFD simulation of biogas combustion</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_aerospaceengineering-birdstrike-simulation-activity-7371561186217066496-9E-e" target="_blank" rel="noopener"><span class="ix">23</span>Bird strike on leading edge — reinforcement study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-birdstrike-aerospace-activity-7369439114904981504-m0bI" target="_blank" rel="noopener"><span class="ix">24</span>SPH bird strike at 201 fps</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fluent-cfd-activity-7368290969810612225-SnQx" target="_blank" rel="noopener"><span class="ix">26</span>Two vs four wheels — dynamic Fluent study</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-explicitdynamics-simulation-activity-7367959511292112896-3Pr9" target="_blank" rel="noopener"><span class="ix">27</span>Impact on ribs — biomechanics</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-fea-simulation-activity-7367585432093622273-vyVT" target="_blank" rel="noopener"><span class="ix">28</span>Hyperelastic material under impact</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_ansys-cfd-simulation-activity-7364348130806444035-quLG" target="_blank" rel="noopener"><span class="ix">30</span>Dynamic simulation of Hellfire R9X missile</a>
+      <a href="https://www.linkedin.com/posts/jubayer-ahmed-sajid-5205a3336_lsdyna-ansys-simulation-activity-7363239698539888643-Qnnr" target="_blank" rel="noopener"><span class="ix">31</span>Friction turning into heat — LS-DYNA</a>
     </div>
   </details>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience">
-  <div class="rv">
-    <div class="eyebrow">04 / Trajectory</div>
-    <h2>Experience & competitions</h2>
-    <p class="section-note">From national design competitions to industrial MRO floors to simulation engineering internships.</p>
+<!-- ============ 03.1 IN MOTION (scroll-scrub) ============ -->
+<div class="scrub" id="motion">
+  <div class="scrub-sticky">
+    <canvas id="scrub" aria-label="Scroll-driven slow motion impact sequence"></canvas>
+    <div class="sc-head">
+      <div class="eyebrow">— 03.1 / Scroll to scrub</div>
+      <div class="sc-title" id="scTitle">In <em>motion.</em></div>
+    </div>
+    <div class="sc-cap" data-p="0.04,0.20"><div class="n">Phase 01 — Approach</div><div class="t">A 1.8 kg soft body closes at 116 m/s. The panel doesn't know yet.</div></div>
+    <div class="sc-cap" data-p="0.24,0.42"><div class="n">Phase 02 — Contact</div><div class="t">First contact. SPH particles disperse across the skin in microseconds.</div></div>
+    <div class="sc-cap" data-p="0.46,0.66" data-static><div class="n">Phase 03 — Peak deformation</div><div class="t">The stress wave blooms — 2.2 mm at the crest, racing between stiffeners.</div></div>
+    <div class="sc-cap" data-p="0.70,0.92"><div class="n">Phase 04 — Dissipation</div><div class="t">Energy bleeds into damped ripples. The structure holds. The model learns.</div></div>
+    <div class="sc-hint">Scroll — the timeline follows you</div>
+    <div class="sc-read">t = <span id="scT">0.000</span> s<br>frame <span id="scF">000</span> / 312</div>
+    <div class="sc-bar"><i id="scBar"></i></div>
   </div>
-  <div class="tl rv">
-    <div class="tl-item">
-      <span class="when">2025 — 2026</span>
-      <h3>Intern Simulation Engineer</h3>
-      <div class="org">Simulation Support BD</div>
-      <p>FEA and impact-dynamics work in a professional engineering simulation environment — structural analysis and simulation-driven design tasks for client problems.</p>
+</div>
+
+<!-- ============ 04 TRAJECTORY ============ -->
+<section id="trajectory">
+  <div class="rv">
+    <div class="eyebrow">— 04 / Trajectory</div>
+    <h2>Where the work <em>happened.</em></h2>
+  </div>
+  <div class="xp rv">
+    <div class="xrow">
+      <div><h3>Intern Simulation Engineer</h3><div class="org">Simulation Support BD</div></div>
+      <div class="yr">2025 — 2026</div>
+      <p>FEA and impact-dynamics work in a professional simulation environment — structural analysis and simulation-driven engineering for client problems.</p>
     </div>
-    <div class="tl-item">
-      <span class="when">Jun — Jul 2025</span>
-      <h3>Industrial Trainee / Visiting Scholar</h3>
-      <div class="org">Biman Bangladesh Airlines & BAF MROU 214 / 216</div>
-      <p>Four-week industrial placement inside airline and air force maintenance, repair and overhaul units — hands-on exposure to aerospace maintenance and operational systems.</p>
+    <div class="xrow">
+      <div><h3>Simulation Lead — 42nd VFS Design Competition</h3><div class="org">Team Hawks · Bangladesh University of Professionals</div></div>
+      <div class="yr">2025 — 2026</div>
+      <p>Led system-level simulation and performance evaluation of a conceptual surveillance aircraft under defined payload and mission constraints.</p>
     </div>
-    <div class="tl-item">
-      <span class="when">2025 — 2026</span>
-      <h3>Simulation Lead — 42nd VFS Design Competition</h3>
-      <div class="org">Team Hawks · Bangladesh University of Professionals</div>
-      <p>Led system-level simulation and performance evaluation of a conceptual surveillance aircraft under defined payload and mission constraints, feeding multidisciplinary design decisions.</p>
+    <div class="xrow">
+      <div><h3>Industrial Trainee / Visiting Scholar</h3><div class="org">Biman Bangladesh Airlines & BAF MROU 214 / 216</div></div>
+      <div class="yr">Jun — Jul 2025</div>
+      <p>Four-week placement inside airline and air force maintenance, repair and overhaul units — hands-on exposure to aerospace operational systems.</p>
     </div>
-    <div class="tl-item">
-      <span class="when">2024 — 2025</span>
-      <h3>Design & Simulation Engineer — 41st VFS Design Competition</h3>
-      <div class="org">Team AGNI · Aviation and Aerospace University, Bangladesh</div>
+    <div class="xrow">
+      <div><h3>Design & Simulation Engineer — 41st VFS</h3><div class="org">Team AGNI · Aviation and Aerospace University, Bangladesh</div><span class="res">18th globally</span></div>
+      <div class="yr">2024 — 2025</div>
       <p>Performance analysis and aerodynamic/structural design support for a UAV built for disaster-prone operating environments.</p>
-      <span class="result">18th globally</span>
     </div>
-    <div class="tl-item">
-      <span class="when">2024</span>
-      <h3>Team Member — AIAA Design/Build/Fly</h3>
-      <div class="org">Team Airborne Phoenix · AAUB</div>
-      <p>CAD modeling, structural considerations, fabrication support, testing and system-level performance evaluation of a mission-based UAV.</p>
-      <span class="result">36th worldwide · 1st in Bangladesh</span>
+    <div class="xrow">
+      <div><h3>Team Member — AIAA Design/Build/Fly</h3><div class="org">Team Airborne Phoenix · AAUB</div><span class="res">36th worldwide · 1st in Bangladesh</span></div>
+      <div class="yr">2024</div>
+      <p>CAD modeling, structural work, fabrication support, testing and system-level performance evaluation of a mission-based UAV.</p>
     </div>
-    <div class="tl-item">
-      <span class="when">2023 — 2024</span>
-      <h3>Team Lead — Design Decode 1.0</h3>
-      <div class="org">SCADR RUET · National CAD Competition</div>
-      <p>Led the winning team on a mobility solution for dense urban traffic: an optimized auto-rickshaw concept validated through CAD and multidisciplinary FEA, balancing structure, safety and cost — later developed into a journal paper.</p>
-      <span class="result">National champion</span>
+    <div class="xrow">
+      <div><h3>Team Lead — Design Decode 1.0</h3><div class="org">SCADR RUET · National CAD Competition</div><span class="res">National champion</span></div>
+      <div class="yr">2023 — 2024</div>
+      <p>Led the winning team on an urban mobility concept validated through CAD and multidisciplinary FEA — later developed into a journal paper.</p>
     </div>
+  </div>
+
+  <div class="sub-h rv">
+    <div class="eyebrow">— 04.1 / Recognition</div>
+    <h2>Honors & <em>credentials.</em></h2>
+  </div>
+  <div class="rec rv">
+    <div class="rrow"><span class="t">National CAD Champion — Design Decode 1.0</span><span class="o">SCADR RUET</span><span class="y">2024</span></div>
+    <div class="rrow"><span class="t">1st in Bangladesh · 36th Worldwide — AIAA DBF</span><span class="o">AIAA</span><span class="y">2024</span></div>
+    <div class="rrow"><span class="t">18th Globally — 41st Design Competition</span><span class="o">Vertical Flight Society</span><span class="y">2025</span></div>
+    <div class="rrow"><span class="t">Vice-Chancellor Scholarship</span><span class="o">Aviation and Aerospace University, Bangladesh</span><span class="y">Ongoing</span></div>
+    <div class="rrow"><span class="t">Certified SolidWorks Professional — CSWP</span><span class="o">Dassault Systèmes</span><span class="y">2025</span></div>
+    <div class="rrow"><span class="t">CSWA & CSWA — Additive Manufacturing</span><span class="o">Dassault Systèmes</span><span class="y">2024</span></div>
+    <div class="rrow"><span class="t">10+ ANSYS Course Certifications</span><span class="o">Ansys</span><span class="y">2025</span></div>
   </div>
 </section>
 
-<!-- ================= SKILLS ================= -->
-<section id="skills">
+<!-- ============ 05 TOOLCHAIN ============ -->
+<section id="toolchain">
   <div class="rv">
-    <div class="eyebrow">05 / Toolchain</div>
-    <h2>Skills & certifications</h2>
+    <div class="eyebrow">— 05 / Toolchain</div>
+    <h2>What runs the <em>lab.</em></h2>
   </div>
-  <div class="sk-grid rv" style="margin-top:40px">
-    <div class="sk">
-      <h3>// Simulation & analysis</h3>
-      <div class="chips"><span class="chip">ANSYS Mechanical</span><span class="chip">Explicit Dynamics</span><span class="chip">LS-DYNA</span><span class="chip">ANSYS Fluent (CFD)</span><span class="chip">ACP Composites</span><span class="chip">SPH Methods</span><span class="chip">FEA</span><span class="chip">Structural Design</span><span class="chip">Impact Dynamics</span></div>
-    </div>
-    <div class="sk">
-      <h3>// Design & manufacturing</h3>
-      <div class="chips"><span class="chip">SolidWorks (CSWP)</span><span class="chip">CAD / 3D Modeling</span><span class="chip">Additive Manufacturing</span><span class="chip">Design Optimization</span><span class="chip">Topology Optimization</span></div>
-    </div>
-    <div class="sk">
-      <h3>// Computing & data</h3>
-      <div class="chips"><span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">Machine Learning Surrogates</span><span class="chip">Numerical Methods</span><span class="chip">KeyShot</span><span class="chip">Adobe Photoshop</span></div>
-    </div>
-    <div class="sk">
-      <h3>// Certifications</h3>
-      <div class="cert-row"><span class="c">Certified SolidWorks Professional (CSWP)</span><span class="y">2025</span></div>
-      <div class="cert-row"><span class="c">Certified SolidWorks Associate (CSWA)</span><span class="y">2024</span></div>
-      <div class="cert-row"><span class="c">CSWA — Additive Manufacturing</span><span class="y">2024</span></div>
-      <div class="cert-row"><span class="c">10+ ANSYS course certifications</span><span class="y">2025</span></div>
-      <div class="cert-row"><span class="c">COMSOL Multiphysics workshop (BUET)</span><span class="y">2025</span></div>
+  <div class="sk-grid rv">
+    <div class="sk"><h3>— Simulation & analysis</h3><div class="chips"><span class="chip">ANSYS Mechanical</span><span class="chip">Explicit Dynamics</span><span class="chip">LS-DYNA</span><span class="chip">ANSYS Fluent</span><span class="chip">ACP Composites</span><span class="chip">SPH Methods</span><span class="chip">FEA</span><span class="chip">Impact Dynamics</span></div></div>
+    <div class="sk"><h3>— Design & manufacturing</h3><div class="chips"><span class="chip">SolidWorks (CSWP)</span><span class="chip">CAD / 3D Modeling</span><span class="chip">Additive Manufacturing</span><span class="chip">Design Optimization</span><span class="chip">Topology Optimization</span></div></div>
+    <div class="sk"><h3>— Computing & data</h3><div class="chips"><span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">ML Surrogates</span><span class="chip">Numerical Methods</span><span class="chip">KeyShot</span><span class="chip">Adobe Photoshop</span></div></div>
+    <div class="sk"><h3>— Certifications</h3>
+      <div class="crow"><span>Certified SolidWorks Professional (CSWP)</span><span class="y">2025</span></div>
+      <div class="crow"><span>Certified SolidWorks Associate (CSWA)</span><span class="y">2024</span></div>
+      <div class="crow"><span>CSWA — Additive Manufacturing</span><span class="y">2024</span></div>
+      <div class="crow"><span>10+ ANSYS course certifications</span><span class="y">2025</span></div>
     </div>
   </div>
 </section>
 
-<!-- ================= REFERENCES + CONTACT ================= -->
+<!-- ============ 06 REFERENCES + CONTACT ============ -->
 <section id="contact">
   <div class="rv">
-    <div class="eyebrow">06 / References</div>
-    <h2>Academic references</h2>
+    <div class="eyebrow">— 06 / References</div>
+    <h2>Hands behind <em>the work.</em></h2>
   </div>
-  <div class="ref-grid rv" style="margin:40px 0 90px">
-    <div class="ref"><h3>Dr. Saiaf Bin Rayhan</h3><div class="role">Assistant Professor, Dept. of Aerospace Engineering<br>Aviation and Aerospace University, Bangladesh</div><a href="mailto:rayhan.saiaf@mail.nwpu.edu.cn">rayhan.saiaf@mail.nwpu.edu.cn</a></div>
-    <div class="ref"><h3>Dr. Ivan Grgić</h3><div class="role">Assistant Professor, Dept. for Mechanical Engineering<br>University of Slavonski Brod, Croatia</div><a href="mailto:igrgic@unisb.hr">igrgic@unisb.hr</a></div>
-    <div class="ref"><h3>Siam Shakil</h3><div class="role">Senior Mechanical Design Engineer<br>BJIT Ltd.</div><a href="https://www.linkedin.com/in/siam-shakil" target="_blank" rel="noopener">LinkedIn profile ↗</a></div>
+  <div class="ref-grid rv">
+    <div class="ref"><h3>Dr. Saiaf Bin Rayhan</h3><div class="role">Assistant Professor, Dept. of Aerospace Engineering — Aviation and Aerospace University, Bangladesh</div><a href="mailto:rayhan.saiaf@mail.nwpu.edu.cn">rayhan.saiaf@mail.nwpu.edu.cn</a></div>
+    <div class="ref"><h3>Dr. Ivan Grgić</h3><div class="role">Assistant Professor, Dept. for Mechanical Engineering — University of Slavonski Brod, Croatia</div><a href="mailto:igrgic@unisb.hr">igrgic@unisb.hr</a></div>
+    <div class="ref"><h3>Siam Shakil</h3><div class="role">Senior Mechanical Design Engineer — BJIT Ltd.</div><a href="https://www.linkedin.com/in/siam-shakil" target="_blank" rel="noopener">LinkedIn profile ↗</a></div>
   </div>
 
-  <div class="contact rv">
-    <div class="eyebrow" style="justify-content:center">07 / Contact</div>
-    <h2>Let's run the next case together</h2>
-    <p>Open to PhD opportunities, research collaboration and simulation engineering work in computational mechanics, impact dynamics and aerospace structures.</p>
-    <div class="row">
-      <a class="btn btn-solid" href="mailto:sajid.jubayer2@gmail.com">sajid.jubayer2@gmail.com</a>
-      <a class="btn" href="https://linkedin.com/in/jubayer-ahmed-sajid-5205a3336" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://www.researchgate.net/profile/Jubayer-Sajid" target="_blank" rel="noopener">ResearchGate</a>
-      <a class="btn" href="tel:+8801953657128">+880 1953-657128</a>
+  <div class="contact rv" style="margin-top:130px">
+    <div class="eyebrow" style="text-align:center">— 07 / Contact</div>
+    <h2>Let's run the next <em>case.</em></h2>
+    <p class="lede" style="text-align:center">Open to PhD opportunities, research collaboration and simulation engineering work in computational mechanics, impact dynamics and aerospace structures.</p>
+    <a class="big-mail" href="mailto:sajid.jubayer2@gmail.com">sajid.jubayer2@gmail.com</a>
+    <div class="c-row">
+      <a class="pillbtn" href="https://linkedin.com/in/jubayer-ahmed-sajid-5205a3336" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="pillbtn" href="https://www.researchgate.net/profile/Jubayer-Sajid" target="_blank" rel="noopener">ResearchGate</a>
+      <a class="pillbtn" href="tel:+8801953657128">+880 1953-657128</a>
+      <a class="pillbtn" href="mailto:sajid-22014029@aaub.edu.bd">University email</a>
     </div>
   </div>
 </section>
 </main>
 
+<div class="f-mq" aria-hidden="true"><div class="mq-track">
+  <span>Let's run</span><span class="st">the next</span><span class="o">case</span><span class="st">✦</span><span class="o">Let's run</span><span class="st">the next</span><span>case</span><span class="st">✦</span>
+</div></div>
+
 <footer>
   <span>© 2026 Jubayer Ahmed Sajid</span>
-  <span>Savar, Dhaka, Bangladesh · sajid-22014029@aaub.edu.bd</span>
+  <span>Savar, Dhaka, Bangladesh</span>
+  <a href="#top">Back to top ↑</a>
 </footer>
+
+<style>
+/* ---------- scroll-scrub cinematic ---------- */
+.scrub{position:relative;height:340vh;background:var(--bg)}
+.scrub-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+#scrub{position:absolute;inset:0;width:100%;height:100%}
+.sc-head{position:absolute;top:100px;left:32px;z-index:2}
+.sc-head .eyebrow{margin-bottom:14px}
+.sc-title{font-family:var(--fd);font-weight:800;font-size:clamp(42px,7.5vw,112px);letter-spacing:-.03em;text-transform:uppercase;line-height:.9;color:var(--ink)}
+.sc-title em{font-size:1.05em}
+.sc-cap{position:absolute;left:32px;bottom:130px;z-index:2;max-width:600px;opacity:0;will-change:opacity,transform}
+.sc-cap .n{font-family:var(--fm);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.sc-cap .t{font-family:var(--fs);font-style:italic;font-size:clamp(24px,3.4vw,42px);line-height:1.2;color:var(--ink)}
+.sc-bar{position:absolute;left:32px;right:32px;bottom:56px;height:2px;background:var(--line);z-index:2}
+.sc-bar i{display:block;height:100%;width:0;background:var(--ink)}
+.sc-read{position:absolute;right:32px;bottom:72px;font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--muted);z-index:2;text-transform:uppercase;text-align:right}
+.sc-hint{position:absolute;left:32px;bottom:72px;font-family:var(--fm);font-size:10.5px;letter-spacing:.16em;color:var(--dim);z-index:2;text-transform:uppercase}
+@media(max-width:680px){
+  .scrub{height:260vh}
+  .sc-head{left:20px;top:88px}
+  .sc-cap{left:20px;right:20px;bottom:110px}
+  .sc-bar{left:20px;right:20px}
+  .sc-read{right:20px}
+  .sc-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .scrub{height:auto}
+  .scrub-sticky{position:relative;height:72vh}
+  .sc-cap{opacity:0}
+  .sc-cap[data-static]{opacity:1}
+}
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* ============ scroll reveals ============ */
+/* ============ page utilities ============ */
 (function(){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-})();
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* reveals */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  /* scroll progress */
+  const bar=document.getElementById('progress');
+  addEventListener('scroll',()=>{const h=document.documentElement;const m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?(h.scrollTop/m)*100:0)+'%';},{passive:true});
+
+  /* marquee duplication for seamless loop */
+  document.querySelectorAll('.mq-track').forEach(t=>{t.innerHTML+=t.innerHTML;});
+
+  /* live Dhaka clock */
+  const ck=document.getElementById('clock');
+  function tick(){if(ck)ck.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit'});}
+  tick();setInterval(tick,15000);
+
+  /* animated counters */
+  const pad=(n,p)=>String(n).padStart(p||1,'0');
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    const el=e.target,target=+el.dataset.target,p=+(el.dataset.pad||1);
+    if(reduced){el.textContent=pad(target,p);return;}
+    const t0=performance.now(),dur=1300;
+    (function step(now){const k=Math.min(1,(now-t0)/dur),ease=1-Math.pow(1-k,3);
+      el.textContent=pad(Math.round(target*ease),p);
+      if(k<1)requestAnimationFrame(step);})(t0);
+  }),{threshold:.6});
+  document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
+
+  /* cursor ring (fine pointers only) */
+  const ring=document.getElementById('ring');
+  if(ring&&!reduced&&matchMedia('(pointer:fine)').matches){
+    let x=innerWidth/2,y=innerHeight/2,tx=x,ty=y,shown=false;
+    addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;if(!shown){shown=true;ring.classList.add('on');}},{passive:true});
+    (function loop(){x+=(tx-x)*0.18;y+=(ty-y)*0.18;ring.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;requestAnimationFrame(loop);})();
+    document.querySelectorAll('a,button,summary,.chip').forEach(el=>{
+      el.addEventListener('pointerenter',()=>ring.classList.add('big'));
+      el.addEventListener('pointerleave',()=>ring.classList.remove('big'));
+    });
+  }
+
+  /* hero parallax on scroll */
+  const hi=document.querySelector('.hero-inner');
+  if(hi&&!reduced){
+    addEventListener('scroll',()=>{
+      const y=scrollY;if(y<innerHeight){hi.style.transform=`translateY(${y*0.16}px)`;hi.style.opacity=String(Math.max(0,1-y/(innerHeight*0.85)));}
+    },{passive:true});
+  }
+
+  /* card tilt */
+  if(!reduced&&matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.proj').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect();
+        const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+        card.style.transition='transform .08s ease-out';
+        card.style.transform=`perspective(900px) rotateX(${-py*5}deg) rotateY(${px*6}deg) translateY(-3px)`;
+      });
+      card.addEventListener('pointerleave',()=>{card.style.transition='transform .5s ease';card.style.transform='';});
+    });
+  }
+})();
+</script>
+<script>
 /* ============ hero simulation ============ */
 (function(){
   const canvas=document.getElementById('sim');
   if(!canvas||typeof THREE==='undefined')return;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* adaptive quality: phones get a lighter scene */
   const small=Math.min(window.innerWidth,window.innerHeight)<768||window.matchMedia('(pointer:coarse)').matches;
-  const SX=small?38:64, SY=small?22:38;      /* panel mesh density */
-  const N=small?200:380;                      /* SPH particles */
-  const DN=small?110:260;                     /* ambient dust */
-  const FRAME_SKIP=small?1:0;                 /* render every 2nd frame on mobile (~30fps) */
+  const SX=small?38:64, SY=small?22:38;
+  const PER=small?110:220;                 /* particles per shot */
+  const SHOTS=2, N=PER*SHOTS;
+  const DN=small?110:240;
+  const FRAME_SKIP=small?1:0;
+  const LX=small?0:-7, BX=small?20:13;
 
   const renderer=new THREE.WebGLRenderer({canvas,antialias:!small,alpha:true,powerPreference:'high-performance'});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,small?1.5:2));
   const scene=new THREE.Scene();
-  scene.fog=new THREE.Fog(0x070B12,55,120);
+  scene.fog=new THREE.Fog(0xF6F7F8,55,120);
   const camera=new THREE.PerspectiveCamera(46,2,0.1,300);
-  camera.position.set(20,9,34);
-  camera.lookAt(0,0,0);
+  camera.position.set(BX,9,34);
+  camera.lookAt(LX,0,0);
 
-  const jetStops=[[0.0,0x10309F],[0.28,0x0FB4E8],[0.52,0x2BD97E],[0.76,0xF5D90A],[1.0,0xFF5B3A]].map(([t,h])=>[t,new THREE.Color(h)]);
+  /* muted matte jet colormap */
+  const jetStops=[[0.0,0x2450B8],[0.28,0x0E9BC4],[0.52,0x18A860],[0.76,0xE0A317],[1.0,0xE05C33]].map(([t,h])=>[t,new THREE.Color(h)]);
   function jet(t){
     t=Math.max(0,Math.min(1,t));
     for(let i=1;i<jetStops.length;i++){
@@ -600,7 +801,7 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
     }
     return jetStops[jetStops.length-1][1].clone();
   }
-  const baseCol=new THREE.Color(0x1B3B6B);
+  const baseCol=new THREE.Color(0xB7C4D1);   /* light slate mesh on paper */
 
   /* ---- stiffened panel ---- */
   const PW=34,PH=20;
@@ -609,56 +810,91 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
   const colors=new Float32Array(vcount*3);
   for(let i=0;i<vcount;i++){colors[i*3]=baseCol.r;colors[i*3+1]=baseCol.g;colors[i*3+2]=baseCol.b;}
   panelGeo.setAttribute('color',new THREE.BufferAttribute(colors,3));
-  const panel=new THREE.Mesh(panelGeo,new THREE.MeshBasicMaterial({wireframe:true,vertexColors:true,transparent:true,opacity:.9}));
+  const panel=new THREE.Mesh(panelGeo,new THREE.MeshBasicMaterial({wireframe:true,vertexColors:true,transparent:true,opacity:.8}));
   scene.add(panel);
   const basePos=panelGeo.attributes.position.array.slice();
 
-  const stiffMat=new THREE.MeshBasicMaterial({wireframe:true,color:0x27476E,transparent:true,opacity:.55});
+  const stiffMat=new THREE.MeshBasicMaterial({wireframe:true,color:0xC4CFDA,transparent:true,opacity:.7});
   for(let i=-2;i<=2;i++){
     const s=new THREE.Mesh(new THREE.BoxGeometry(0.9,PH,1.6,1,small?6:10,2),stiffMat);
     s.position.set(i*6.4,0,-1.0);
     scene.add(s);
   }
-  const frame=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(PW+1.2,PH+1.2)),new THREE.LineBasicMaterial({color:0x3E5E86,transparent:true,opacity:.8}));
+  const frame=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(PW+1.2,PH+1.2)),new THREE.LineBasicMaterial({color:0x7E93A8,transparent:true,opacity:.8}));
   scene.add(frame);
 
-  /* ---- SPH projectile ---- */
+  /* ---- scanning sweep line across the panel ---- */
+  const scanMat=new THREE.MeshBasicMaterial({color:0x0E7FA8,transparent:true,opacity:.12,depthWrite:false});
+  const scan=new THREE.Mesh(new THREE.PlaneGeometry(0.35,PH),scanMat);
+  scan.position.z=0.15;
+  scene.add(scan);
+
+  /* ---- shockwave rings (one per shot) ---- */
+  const rings=[];
+  for(let s=0;s<SHOTS;s++){
+    const rg=new THREE.Mesh(
+      new THREE.RingGeometry(0.9,1.05,40),
+      new THREE.MeshBasicMaterial({color:0xE0A317,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false})
+    );
+    rg.position.z=0.3;rg.visible=false;
+    scene.add(rg);rings.push(rg);
+  }
+
+  /* ---- SPH projectiles: N particles split across SHOTS ---- */
   const pGeo=new THREE.BufferGeometry();
   const pPos=new Float32Array(N*3);
   const pCol=new Float32Array(N*3);
-  const local=[]; const vel=[];
+  const pAlpha=new Float32Array(N).fill(1);
+  const local=[],vel=[];
   for(let i=0;i<N;i++){
     const a=Math.random()*Math.PI*2, r=Math.pow(Math.random(),0.5)*1.15, zz=(Math.random()-0.5)*4.2;
     local.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a)*r,zz));
     vel.push(new THREE.Vector3());
-    const c=jet(0.25+Math.random()*0.25);
+    const c=jet(0.1+Math.random()*0.32);
     pCol[i*3]=c.r;pCol[i*3+1]=c.g;pCol[i*3+2]=c.b;
   }
   pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
   pGeo.setAttribute('color',new THREE.BufferAttribute(pCol,3));
   const pMat=new THREE.PointsMaterial({size:small?0.42:0.34,vertexColors:true,transparent:true,opacity:.95,sizeAttenuation:true});
-  const cloud=new THREE.Points(pGeo,pMat);
-  scene.add(cloud);
+  scene.add(new THREE.Points(pGeo,pMat));
 
-  /* ---- ambient dust ---- */
+  /* ---- ambient dust with slow drift ---- */
   const dPos=new Float32Array(DN*3);
   for(let i=0;i<DN;i++){dPos[i*3]=(Math.random()-0.5)*160;dPos[i*3+1]=(Math.random()-0.5)*90;dPos[i*3+2]=(Math.random()-0.5)*160;}
   const dGeo=new THREE.BufferGeometry();dGeo.setAttribute('position',new THREE.BufferAttribute(dPos,3));
-  scene.add(new THREE.Points(dGeo,new THREE.PointsMaterial({size:.16,color:0x2E4A6E,transparent:true,opacity:.5})));
+  const dust=new THREE.Points(dGeo,new THREE.PointsMaterial({size:.16,color:0xB6C3D0,transparent:true,opacity:.6}));
+  scene.add(dust);
 
-  const grid=new THREE.GridHelper(180,small?40:60,0x16283F,0x101D30);
+  const grid=new THREE.GridHelper(180,small?40:60,0xE8EEF3,0xF1F5F8);
   grid.position.y=-13;
   scene.add(grid);
 
-  /* ---- loop state ---- */
+  /* ---- multi-shot loop state ---- */
   const timeEl=document.getElementById('simTime');
   const stateEl=document.getElementById('simState');
-  const CYCLE=6.4, FLIGHT=1.15, START_Z=44, SPEED=START_Z/FLIGHT;
-  const RIPPLE_END=FLIGHT+4.6;               /* ripple visually dead after this */
-  let impact={x:0,y:0}, nextImpact=()=>({x:(Math.random()-0.5)*14,y:(Math.random()-0.5)*8});
-  impact=nextImpact();
-  let mode='flight', t=0, last=performance.now();
-  let panelFlat=true, frameCount=0;
+  const CYCLE=7.8, FLIGHT=1.15, START_Z=44, SPEED=START_Z/FLIGHT;
+  const LAUNCH=[0,2.4];                       /* staggered launch times */
+  const RIPPLE_LIFE=4.6;
+  const shots=[];
+  function newImpacts(){
+    const a={x:(Math.random()-0.5)*13,y:(Math.random()-0.5)*7};
+    let b;
+    do{b={x:(Math.random()-0.5)*13,y:(Math.random()-0.5)*7};}
+    while(Math.hypot(a.x-b.x,a.y-b.y)<7);
+    return [a,b];
+  }
+  function resetCycle(){
+    const imps=newImpacts();
+    shots.length=0;
+    for(let s=0;s<SHOTS;s++){
+      shots.push({t0:LAUNCH[s],impact:imps[s],mode:'wait',hitAt:-1});
+      rings[s].visible=false;rings[s].material.opacity=0;
+      for(let i=s*PER;i<(s+1)*PER;i++){vel[i].set(0,0,0);pAlpha[i]=1;}
+    }
+    pMat.opacity=.95;
+  }
+  resetCycle();
+  let t=0,last=performance.now(),panelFlat=true,frameCount=0,shake=0;
   let mx=0,my=0,tx=0,ty=0;
   if(!small){
     window.addEventListener('pointermove',e=>{
@@ -667,51 +903,72 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
     },{passive:true});
   }
 
-  /* pause when hero is off-screen or tab hidden */
-  let visible=true, pageActive=!document.hidden, rafId=null;
+  /* pause off-screen / hidden tab */
+  let visible=true,pageActive=!document.hidden,rafId=null;
   function running(){return visible&&pageActive&&!reduced;}
   function kick(){if(running()&&rafId===null){last=performance.now();rafId=requestAnimationFrame(frameLoop);}}
   const vio=new IntersectionObserver(es=>{visible=es[0].isIntersecting;kick();},{threshold:0.02});
   vio.observe(canvas);
   document.addEventListener('visibilitychange',()=>{pageActive=!document.hidden;kick();});
 
-  function resetCycle(){
-    impact=nextImpact();
-    mode='flight';
-    pMat.opacity=.95;
-    for(let i=0;i<N;i++)vel[i].set(0,0,0);
-  }
-
-  function updateProjectile(tt,dt){
-    if(mode==='flight'){
-      const z=START_Z-SPEED*tt;
-      for(let i=0;i<N;i++){
-        const l=local[i];
-        pPos[i*3]=impact.x+l.x;
-        pPos[i*3+1]=impact.y+l.y;
-        pPos[i*3+2]=z+l.z;
+  function updateShots(dt){
+    let anyGone=true;
+    for(let s=0;s<SHOTS;s++){
+      const sh=shots[s],ts=t-sh.t0;
+      const i0=s*PER,i1=i0+PER;
+      if(ts<0){ /* waiting: park far away */
+        if(sh.mode!=='wait'){sh.mode='wait';}
+        for(let i=i0;i<i1;i++){pPos[i*3+2]=200;}
+        anyGone=false;continue;
       }
-      if(z<=0.6){
-        mode='splash';
-        for(let i=0;i<N;i++){
+      if(sh.mode==='wait')sh.mode='flight';
+      if(sh.mode==='flight'){
+        anyGone=false;
+        const z=START_Z-SPEED*ts;
+        for(let i=i0;i<i1;i++){
           const l=local[i];
-          const ang=Math.atan2(l.y,l.x);
-          const sp=6+Math.random()*14;
-          vel[i].set(Math.cos(ang)*sp,Math.sin(ang)*sp*0.8+2,2+Math.random()*7);
+          pPos[i*3]=sh.impact.x+l.x;
+          pPos[i*3+1]=sh.impact.y+l.y;
+          pPos[i*3+2]=z+l.z;
         }
-        stateEl&&(stateEl.textContent='IMPACT — SPH DISPERSION');
+        if(z<=0.6){
+          sh.mode='splash';sh.hitAt=t;shake=1;
+          rings[s].visible=true;
+          rings[s].position.set(sh.impact.x,sh.impact.y,0.3);
+          rings[s].scale.set(1,1,1);
+          rings[s].material.opacity=.55;
+          for(let i=i0;i<i1;i++){
+            const l=local[i];
+            const ang=Math.atan2(l.y,l.x);
+            const sp=6+Math.random()*14;
+            vel[i].set(Math.cos(ang)*sp,Math.sin(ang)*sp*0.8+2,2+Math.random()*7);
+          }
+          stateEl&&(stateEl.textContent='Impact '+(s+1)+' — dispersion');
+        }
+      }else{ /* splash */
+        const age=t-sh.hitAt;
+        const fade=Math.max(0,1-age*0.55);
+        if(fade>0){
+          anyGone=false;
+          for(let i=i0;i<i1;i++){
+            vel[i].y-=9.5*dt;vel[i].multiplyScalar(0.985);
+            pPos[i*3]+=vel[i].x*dt;
+            pPos[i*3+1]+=vel[i].y*dt;
+            pPos[i*3+2]+=vel[i].z*dt;
+            if(pPos[i*3+2]<0.2){pPos[i*3+2]=0.2;vel[i].z*=-0.25;}
+          }
+        }else{
+          for(let i=i0;i<i1;i++)pPos[i*3+2]=200;
+        }
       }
-    }else{
-      if(pMat.opacity<=0)return;               /* particles gone: skip work */
-      for(let i=0;i<N;i++){
-        vel[i].y-=9.5*dt; vel[i].multiplyScalar(0.985);
-        pPos[i*3]+=vel[i].x*dt;
-        pPos[i*3+1]+=vel[i].y*dt;
-        pPos[i*3+2]+=vel[i].z*dt;
-        if(pPos[i*3+2]<0.2){pPos[i*3+2]=0.2;vel[i].z*=-0.25;}
+      /* ring expansion */
+      if(rings[s].visible){
+        const age=t-sh.hitAt;
+        const sc=1+age*9;
+        rings[s].scale.set(sc,sc,1);
+        rings[s].material.opacity=Math.max(0,.55-age*0.75);
+        if(rings[s].material.opacity<=0)rings[s].visible=false;
       }
-      const fade=(t-FLIGHT)/(CYCLE-FLIGHT);
-      pMat.opacity=Math.max(0,0.95*(1-fade*1.15));
     }
     pGeo.attributes.position.needsUpdate=true;
   }
@@ -728,21 +985,24 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
     panelFlat=true;
   }
 
-  function updatePanel(tt){
-    const ts=tt-FLIGHT;
-    if(ts<=0||tt>=RIPPLE_END){                 /* no active ripple: flatten once, then skip */
-      if(!panelFlat)flattenPanel();
-      return;
-    }
+  function updatePanel(){
+    /* superposed ripples from all active impacts */
+    const act=shots.filter(sh=>sh.hitAt>=0&&(t-sh.hitAt)<RIPPLE_LIFE);
+    if(act.length===0){if(!panelFlat)flattenPanel();return;}
     panelFlat=false;
     const pos=panelGeo.attributes.position.array;
     const col=panelGeo.attributes.color.array;
     const A=2.4,sig=4.2,k=0.95,w=6.5;
-    const decay=Math.exp(-ts*0.9);
+    const pre=act.map(sh=>{const ts=t-sh.hitAt;return{x:sh.impact.x,y:sh.impact.y,ts,decay:Math.exp(-ts*0.9)};});
     for(let i=0;i<vcount;i++){
       const x=basePos[i*3],y=basePos[i*3+1];
-      const dx=x-impact.x,dy=y-impact.y,r=Math.sqrt(dx*dx+dy*dy);
-      const z=A*Math.exp(-(r*r)/(2*sig*sig))*Math.cos(k*r-w*ts)*decay;
+      let z=0;
+      for(let a=0;a<pre.length;a++){
+        const P=pre[a];
+        const dx=x-P.x,dy=y-P.y,r=Math.sqrt(dx*dx+dy*dy);
+        z+=A*Math.exp(-(r*r)/(2*sig*sig))*Math.cos(k*r-w*P.ts)*P.decay;
+      }
+      if(z>2.6)z=2.6;else if(z<-2.6)z=-2.6;
       pos[i*3+2]=z;
       const c=Math.abs(z)/A;
       const cc=c>0.02?jet(Math.min(1,c*1.15)):baseCol;
@@ -767,27 +1027,38 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
     if(!running()){rafId=null;return;}
     rafId=requestAnimationFrame(frameLoop);
     frameCount++;
-    if(FRAME_SKIP&&(frameCount&1))return;      /* ~30fps on mobile */
+    if(FRAME_SKIP&&(frameCount&1))return;
     resize();
-    const dt=Math.min((now-last)/1000,0.06); last=now;
+    const dt=Math.min((now-last)/1000,0.06);last=now;
     t+=dt;
-    if(t>=CYCLE){t=0;resetCycle();stateEl&&(stateEl.textContent='PROJECTILE IN FLIGHT');}
-    updateProjectile(t,dt);
-    updatePanel(t);
+    if(t>=CYCLE){t=0;resetCycle();stateEl&&(stateEl.textContent='In flight');}
+    updateShots(dt);
+    updatePanel();
     if(timeEl)timeEl.textContent=(t*0.004).toFixed(4);
-    if(!small){
-      mx+=(tx-mx)*0.04; my+=(ty-my)*0.04;
-      camera.position.x=20+mx*4;
-      camera.position.y=9-my*2.5;
-      camera.lookAt(0,0,2);
-    }
+
+    /* scan sweep */
+    scan.position.x=-PW/2+((now*0.004)%PW);
+
+    /* slow dust rotation for depth */
+    dust.rotation.y=now*0.00002;
+
+    /* camera: slow orbital drift + parallax + impact shake */
+    shake*=Math.exp(-dt*4.5);
+    const jx=(Math.random()-0.5)*shake*0.7, jy=(Math.random()-0.5)*shake*0.5;
+    if(!small){mx+=(tx-mx)*0.04;my+=(ty-my)*0.04;}
+    camera.position.x=BX+Math.sin(now*0.00011)*3.2+mx*4+jx;
+    camera.position.y=9+Math.sin(now*0.00007)*1.3-my*2.5+jy;
+    camera.position.z=34+Math.cos(now*0.00009)*1.6;
+    camera.lookAt(LX,0,2);
     renderer.render(scene,camera);
   }
 
   if(reduced){
-    t=FLIGHT+0.35;
-    updateProjectile(FLIGHT-0.01,1/60);
-    updatePanel(t);
+    t=LAUNCH[1]+FLIGHT+0.35;
+    shots[0].hitAt=FLIGHT;shots[0].mode='splash';
+    shots[1].hitAt=LAUNCH[1]+FLIGHT;shots[1].mode='splash';
+    updateShots(1/60);
+    updatePanel();
     resize();
     renderer.render(scene,camera);
     window.addEventListener('resize',()=>{resize();renderer.render(scene,camera);});
@@ -797,50 +1068,151 @@ a.jdoi:hover{border-color:var(--c-cyan);background:rgba(15,180,232,.08);text-dec
   }
 })();
 </script>
-
 <script>
+/* ============ scroll-scrub impact sequence ============ */
 (function(){
+  const canvas=document.getElementById('scrub');
+  if(!canvas||typeof THREE==='undefined')return;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small=Math.min(innerWidth,innerHeight)<768||matchMedia('(pointer:coarse)').matches;
+  const wrap=document.getElementById('motion');
 
-  /* scroll progress */
-  const bar=document.getElementById('progress');
-  function prog(){const h=document.documentElement;const max=h.scrollHeight-h.clientHeight;bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';}
-  window.addEventListener('scroll',prog,{passive:true});prog();
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:!small,alpha:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,small?1.5:2));
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.Fog(0xF6F7F8,60,140);
+  const camera=new THREE.PerspectiveCamera(44,2,0.1,300);
 
-  /* duplicate ticker content for seamless loop */
-  const tick=document.getElementById('ticker');
-  if(tick)tick.innerHTML+=tick.innerHTML;
+  const stops=[[0,0x2450B8],[.28,0x0E9BC4],[.52,0x18A860],[.76,0xE0A317],[1,0xE05C33]].map(([t,h])=>[t,new THREE.Color(h)]);
+  function jet(t){t=Math.max(0,Math.min(1,t));
+    for(let i=1;i<stops.length;i++){if(t<=stops[i][0]){const[a,c0]=stops[i-1],[b,c1]=stops[i];return c0.clone().lerp(c1,(t-a)/(b-a));}}
+    return stops[stops.length-1][1].clone();}
+  const baseCol=new THREE.Color(0xA9B8C7);
 
-  /* animated counters */
-  const pad=(n,p)=>String(n).padStart(p||1,'0');
-  const cio=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting)return;cio.unobserve(e.target);
-    const el=e.target,target=+el.dataset.target,p=+(el.dataset.pad||1);
-    if(reduced){el.textContent=pad(target,p);return;}
-    const t0=performance.now(),dur=1300;
-    (function step(now){
-      const k=Math.min(1,(now-t0)/dur),ease=1-Math.pow(1-k,3);
-      el.textContent=pad(Math.round(target*ease),p);
-      if(k<1)requestAnimationFrame(step);
-    })(t0);
-  }),{threshold:.6});
-  document.querySelectorAll('.cnt').forEach(el=>cio.observe(el));
+  const PW=30,PH=18,SX=small?34:56,SY=small?20:34;
+  const geo=new THREE.PlaneGeometry(PW,PH,SX,SY);
+  const vc=geo.attributes.position.count;
+  const cols=new Float32Array(vc*3);
+  for(let i=0;i<vc;i++){cols[i*3]=baseCol.r;cols[i*3+1]=baseCol.g;cols[i*3+2]=baseCol.b;}
+  geo.setAttribute('color',new THREE.BufferAttribute(cols,3));
+  scene.add(new THREE.Mesh(geo,new THREE.MeshBasicMaterial({wireframe:true,vertexColors:true,transparent:true,opacity:.9})));
+  const base=geo.attributes.position.array.slice();
+  const stiffM=new THREE.MeshBasicMaterial({wireframe:true,color:0xC4CFDA,transparent:true,opacity:.6});
+  for(let i=-1;i<=1;i++){const s=new THREE.Mesh(new THREE.BoxGeometry(.9,PH,1.5,1,8,2),stiffM);s.position.set(i*7.5,0,-1);scene.add(s);}
+  scene.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(PW+1.2,PH+1.2)),new THREE.LineBasicMaterial({color:0x7E93A8,transparent:true,opacity:.8})));
 
-  /* 3D tilt on project cards */
-  if(!reduced&&window.matchMedia('(pointer:fine)').matches){
-    document.querySelectorAll('.proj').forEach(card=>{
-      card.addEventListener('pointermove',e=>{
-        const r=card.getBoundingClientRect();
-        const x=(e.clientX-r.left)/r.width-0.5, y=(e.clientY-r.top)/r.height-0.5;
-        card.style.transition='transform .08s ease-out';
-        card.style.transform='perspective(800px) rotateX('+(-y*6)+'deg) rotateY('+(x*7)+'deg) translateY(-4px)';
-      });
-      card.addEventListener('pointerleave',()=>{
-        card.style.transition='transform .45s ease';
-        card.style.transform='';
-      });
-    });
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.9,1.03,44),new THREE.MeshBasicMaterial({color:0xE0A317,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));
+  ring.position.z=.3;scene.add(ring);
+
+  const N=small?150:300;
+  const pg=new THREE.BufferGeometry();
+  const pp=new Float32Array(N*3),pc=new Float32Array(N*3);
+  const loc=[],dir=[];
+  for(let i=0;i<N;i++){
+    const a=Math.random()*Math.PI*2,r=Math.pow(Math.random(),.5)*1.1,zz=(Math.random()-.5)*3.8;
+    loc.push([Math.cos(a)*r,Math.sin(a)*r,zz]);
+    const sp=.45+Math.random()*.85;
+    dir.push([Math.cos(a)*sp,Math.sin(a)*sp*.8,Math.random()]);
+    const c=jet(.1+Math.random()*.32);pc[i*3]=c.r;pc[i*3+1]=c.g;pc[i*3+2]=c.b;
   }
+  pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+  pg.setAttribute('color',new THREE.BufferAttribute(pc,3));
+  const pm=new THREE.PointsMaterial({size:small?.42:.32,vertexColors:true,transparent:true,opacity:.95,sizeAttenuation:true});
+  scene.add(new THREE.Points(pg,pm));
+
+  const DUR=5.2,FLIGHT=1.05,SZ=40,SPD=SZ/FLIGHT;
+  const elT=document.getElementById('scT'),elF=document.getElementById('scF'),elBar=document.getElementById('scBar'),elTitle=document.getElementById('scTitle');
+  const caps=[...wrap.querySelectorAll('.sc-cap')].map(el=>{const[a,b]=el.dataset.p.split(',').map(Number);return{el,a,b};});
+
+  function setTime(T,prog){
+    /* projectile — fully deterministic so scrubbing both ways is exact */
+    if(T<FLIGHT){
+      const z=SZ-SPD*T;
+      for(let i=0;i<N;i++){pp[i*3]=loc[i][0];pp[i*3+1]=loc[i][1];pp[i*3+2]=z+loc[i][2];}
+      pm.opacity=.95;
+    }else{
+      const ts=T-FLIGHT,spread=13*(1-Math.exp(-1.15*ts));
+      for(let i=0;i<N;i++){
+        pp[i*3]=loc[i][0]+dir[i][0]*spread;
+        pp[i*3+1]=loc[i][1]+dir[i][1]*spread;
+        pp[i*3+2]=.25+2.4*dir[i][2]*ts*Math.exp(-2.1*ts);
+      }
+      pm.opacity=Math.max(0,.95-ts*.30);
+    }
+    pg.attributes.position.needsUpdate=true;
+
+    /* panel ripple */
+    const pos=geo.attributes.position.array,col=geo.attributes.color.array;
+    const ts=T-FLIGHT,A=2.3,sig=4,k=.95,w=6.2;
+    const dec=ts>0?Math.exp(-ts*.8):0;
+    for(let i=0;i<vc;i++){
+      const x=base[i*3],y=base[i*3+1];
+      let z=0;
+      if(ts>0){const r=Math.sqrt(x*x+y*y);z=A*Math.exp(-(r*r)/(2*sig*sig))*Math.cos(k*r-w*ts)*dec;}
+      pos[i*3+2]=z;
+      const c=Math.abs(z)/A,cc=c>.02?jet(Math.min(1,c*1.15)):baseCol,bl=Math.min(1,c*3);
+      col[i*3]=baseCol.r+(cc.r-baseCol.r)*bl;
+      col[i*3+1]=baseCol.g+(cc.g-baseCol.g)*bl;
+      col[i*3+2]=baseCol.b+(cc.b-baseCol.b)*bl;
+    }
+    geo.attributes.position.needsUpdate=true;
+    geo.attributes.color.needsUpdate=true;
+
+    /* shockwave ring */
+    if(ts>0){const sc=1+ts*8;ring.scale.set(sc,sc,1);ring.material.opacity=Math.max(0,.55-ts*.6);}
+    else ring.material.opacity=0;
+
+    /* cinematic dolly */
+    const ang=-.5+prog*1.05,R=44-prog*16;
+    camera.position.set(Math.sin(ang)*R,11-prog*5,Math.cos(ang)*R);
+    camera.lookAt(0,0,0);
+
+    /* HUD */
+    if(elT)elT.textContent=(T*.004).toFixed(3);
+    if(elF)elF.textContent=String(Math.round(prog*312)).padStart(3,'0');
+    if(elBar)elBar.style.width=(prog*100)+'%';
+    if(elTitle)elTitle.style.opacity=String(Math.max(0,1-prog*6));
+    for(const c of caps){
+      const f=.05;
+      const o=Math.max(0,Math.min((prog-c.a)/f,(c.b-prog)/f,1));
+      c.el.style.opacity=o;
+      c.el.style.transform=`translateY(${(1-o)*14}px)`;
+    }
+  }
+
+  function resize(){
+    const w=canvas.clientWidth,h=canvas.clientHeight;
+    if(canvas.width!==Math.floor(w*renderer.getPixelRatio())||canvas.height!==Math.floor(h*renderer.getPixelRatio())){
+      renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+    }
+  }
+
+  if(reduced){
+    resize();setTime(FLIGHT+.5,.55);renderer.render(scene,camera);
+    addEventListener('resize',()=>{resize();setTime(FLIGHT+.5,.55);renderer.render(scene,camera);});
+    return;
+  }
+
+  let cur=0,target=0,visible=false,raf=null;
+  function progress(){
+    const r=wrap.getBoundingClientRect();
+    const total=r.height-innerHeight;
+    return Math.max(0,Math.min(1,-r.top/Math.max(1,total)));
+  }
+  function loop(){
+    if(!visible){raf=null;return;}
+    raf=requestAnimationFrame(loop);
+    target=progress();
+    cur+=(target-cur)*.14;
+    resize();
+    setTime(cur*DUR,cur);
+    renderer.render(scene,camera);
+  }
+  const vio=new IntersectionObserver(es=>{
+    visible=es[0].isIntersecting;
+    if(visible&&raf===null)raf=requestAnimationFrame(loop);
+  },{threshold:0});
+  vio.observe(wrap);
 })();
 </script>
 </body>
